@@ -1,9 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import imageTest from "./test.gif"
 
 function Home(props) {
 
-	return <h1>Hello from Home</h1>
+	return <img src={imageTest}/>;
+
 }
 
 export default Home;

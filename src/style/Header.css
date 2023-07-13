@@ -1,0 +1,62 @@
+header 
+{
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	align-items: center;
+	padding-left: 60px;
+	padding-right: 40px;
+	justify-content: center;
+	align-items: center;
+	border-bottom: 1px solid rgb(82, 82, 82);
+}
+
+header > ul > li
+{
+	list-style-type: none;
+	font-size: 22px;
+	text-align: center;
+	position: relative;
+}
+
+header > ul
+{
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	padding: 0;
+	margin: 0;
+	align-items: center;
+	justify-content: space-around;
+}
+
+.last-li
+{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+	margin-left: 40px;
+}
+
+.last-li:hover::after
+{
+	width: 0%;
+}
+
+header > ul > li:after
+{
+	content: "";
+	position: absolute;
+	width: 0%;
+	height: 2px;
+	display: block;
+	transition: all 0.4s ease;
+	bottom: -10%;
+}
+
+header > ul > li:hover::after
+{
+	width: 100%;
+	height: 2px;
+	background-color: black;
+}

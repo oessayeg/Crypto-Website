@@ -4,6 +4,7 @@ import News from "./components/News/News"
 import Cryptocurrency from "./components/Cryptocurrencies/Cryptocurrency"
 import Home from "./components/Home/Home"
 import Header from "./components/Header/Header"
+import "./style/Global.css"
 
 function App() {
   return (
