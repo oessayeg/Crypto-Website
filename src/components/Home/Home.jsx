@@ -5,8 +5,12 @@ import { Link } from "react-router-dom"
 import news from "./newspaper.png"
 import time from "./time.png"
 import handshake from "./handshake.png"
-
-// Colors 
+import { Table, TableContainer, TableHead, TableRow, TableCell, TableBody } from "@mui/material"
+import crData from "./Data"
+import { useEffect } from "react"
+import { useState } from "react"
+import Paper from '@mui/material/Paper';
+// Colors
 // blue : #0074D9
 // text : #333333
 // background : #F9F9F9
@@ -14,6 +18,21 @@ import handshake from "./handshake.png"
 // green : #2ECC40
 
 function Home(props) {
+
+	const [data, setData] = useState(null);
+	const [gotData, setGotData] = useState(false);
+
+	useEffect(() => {
+		setData(crData);
+	}, []);
+
+	useEffect(() => {
+		if (data)
+		{
+			setGotData(true);
+			console.log(data[0]);
+		}
+	}, [data]);
 
 	return (
 		<main>
@@ -54,6 +73,49 @@ function Home(props) {
 						</div>
 					</div>
 				</div>
+			</div>
+			<div id="crypto-data-examples">
+				<div id="crypto-data-example-head">
+					<h4>Popular cryptocurrencies</h4>
+					<Link to="cryptocurrencies">See all</Link>
+				</div>
+				<TableContainer  component={Paper}>
+					<Table sx={{ minWidth: 650 }} aria-label="Table of crypto market data">
+						<TableHead>
+							<TableRow>
+								<TableCell>Coin</TableCell>
+								<TableCell align="right">Price</TableCell>
+								<TableCell align="right">1h</TableCell>
+								<TableCell align="right">7d</TableCell>
+								<TableCell align="right">30d</TableCell>
+								<TableCell align="right">Volume</TableCell>
+								<TableCell align="right">Mkt cap</TableCell>
+								<TableCell align="right">Last 7 days</TableCell>
+							</TableRow>
+						</TableHead>
+					<TableBody>
+						{
+							!gotData ? <p>Waiting for data</p> :
+							
+							data.slice(0, 5).map(coin => {
+								return (
+								<TableRow     key={coin.name} sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
+										<TableCell component="th" scope="row">{coin.name}</TableCell>
+										<TableCell align="right">$ {coin.current_price > 1 ? coin.current_price.toFixed(2) : coin.current_price.toFixed(5)}</TableCell>
+										<TableCell align="right">{coin.price_change_percentage_1h_in_currency.toFixed(2)}%</TableCell>
+										<TableCell align="right">{coin.price_change_percentage_7d_in_currency.toFixed(2)}%</TableCell>
+										<TableCell align="right">{coin.price_change_percentage_30d_in_currency.toFixed(2)}%</TableCell>
+										<TableCell align="right">{coin.total_volume}</TableCell>
+										<TableCell align="right">${coin.current_price * coin.circulating_supply}</TableCell>
+										<TableCell align="right">Test</TableCell>
+									</TableRow>
+								)
+							})
+							
+						}
+					</TableBody>
+					</Table>
+				</TableContainer>
 			</div>
 		</main>
 	);

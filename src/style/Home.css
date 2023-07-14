@@ -54,6 +54,7 @@ main
 	margin-top: 65px;
 	padding-left: 25px;
 	padding-right: 25px;
+	margin-bottom: 80px;
 }
 
 #why-points > div
@@ -98,4 +99,20 @@ main
 {
 	margin: 20px;
 	font-size: 20px;
+}
+
+#crypto-data-examples
+{
+	padding-left: 24px;
+	padding-right: 24px;
+}
+
+#crypto-data-example-head
+{
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	padding-left: 15px;
+	padding-right: 15px;
 }
