@@ -105,6 +105,7 @@ main
 {
 	padding-left: 24px;
 	padding-right: 24px;
+	margin-bottom: 80px;
 }
 
 #crypto-data-example-head
@@ -115,4 +116,12 @@ main
 	align-items: center;
 	padding-left: 15px;
 	padding-right: 15px;
+}
+
+#coin-name-block
+{
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	gap: 20px;
 }

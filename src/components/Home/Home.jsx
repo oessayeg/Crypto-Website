@@ -9,7 +9,31 @@ import { Table, TableContainer, TableHead, TableRow, TableCell, TableBody } from
 import crData from "./Data"
 import { useEffect } from "react"
 import { useState } from "react"
-import Paper from '@mui/material/Paper';
+import Paper from '@mui/material/Paper'
+import { Chart } from "chart.js/auto"
+import { Line } from "react-chartjs-2"
+
+const options = {
+	responsive: true,
+	maintainAspectRatio: false,
+	scales: {
+	  x: {
+		display: false, // Remove the x-axis
+	  },
+	  y: {
+		display: false, // Remove the y-axis
+	  },
+	},
+	plugins: {
+	  legend: {
+		display: false, // Remove the legend
+	  },
+	  tooltip: {
+		enabled: false, // Disable tooltips
+	  },
+	},
+  };
+
 // Colors
 // blue : #0074D9
 // text : #333333
@@ -29,8 +53,8 @@ function Home(props) {
 	useEffect(() => {
 		if (data)
 		{
+			console.log(data);
 			setGotData(true);
-			console.log(data[0]);
 		}
 	}, [data]);
 
@@ -83,31 +107,53 @@ function Home(props) {
 					<Table sx={{ minWidth: 650 }} aria-label="Table of crypto market data">
 						<TableHead>
 							<TableRow>
-								<TableCell>Coin</TableCell>
-								<TableCell align="right">Price</TableCell>
-								<TableCell align="right">1h</TableCell>
-								<TableCell align="right">7d</TableCell>
-								<TableCell align="right">30d</TableCell>
-								<TableCell align="right">Volume</TableCell>
-								<TableCell align="right">Mkt cap</TableCell>
-								<TableCell align="right">Last 7 days</TableCell>
+								<TableCell><strong>Coin</strong></TableCell>
+								<TableCell align="right"><strong>Price</strong></TableCell>
+								<TableCell align="right"><strong>1h</strong></TableCell>
+								<TableCell align="right"><strong>7d</strong></TableCell>
+								<TableCell align="right"><strong>30d</strong></TableCell>
+								<TableCell align="right"><strong>Volume</strong></TableCell>
+								<TableCell align="right"><strong>Mkt cap</strong></TableCell>
+								<TableCell align="center" style={{paddingRight: "0"}}><strong>Last 7 days</strong></TableCell>
 							</TableRow>
 						</TableHead>
 					<TableBody>
 						{
 							!gotData ? <p>Waiting for data</p> :
-							
+
 							data.slice(0, 5).map(coin => {
 								return (
-								<TableRow     key={coin.name} sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
-										<TableCell component="th" scope="row">{coin.name}</TableCell>
+								<TableRow key={coin.name} sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
+										<TableCell component="th" scope="row">
+											<div id="coin-name-block">
+												<img src={coin.image} width="32px" height="32px"/>
+												<p>{coin.name}</p>
+											</div>
+										</TableCell>
 										<TableCell align="right">$ {coin.current_price > 1 ? coin.current_price.toFixed(2) : coin.current_price.toFixed(5)}</TableCell>
-										<TableCell align="right">{coin.price_change_percentage_1h_in_currency.toFixed(2)}%</TableCell>
-										<TableCell align="right">{coin.price_change_percentage_7d_in_currency.toFixed(2)}%</TableCell>
-										<TableCell align="right">{coin.price_change_percentage_30d_in_currency.toFixed(2)}%</TableCell>
-										<TableCell align="right">{coin.total_volume}</TableCell>
-										<TableCell align="right">${coin.current_price * coin.circulating_supply}</TableCell>
-										<TableCell align="right">Test</TableCell>
+										<TableCell align="right" >{coin.price_change_percentage_1h_in_currency.toFixed(2)}%</TableCell>
+										<TableCell align="right" >{coin.price_change_percentage_7d_in_currency.toFixed(2)}%</TableCell>
+										<TableCell align="right" >{coin.price_change_percentage_30d_in_currency.toFixed(2)}%</TableCell>
+										<TableCell align="right" >{coin.total_volume}</TableCell>
+										<TableCell align="right" >$ {Math.ceil(coin.current_price * coin.circulating_supply)}</TableCell>
+										<TableCell align="right" style={{paddingRight: "0"}}>
+											<div style={{display: "flex", justifyContent: "center"}}>
+											<div style={{width:"120px", height:"50px", display: "flex"}}>
+												<Line data={{
+													labels : Array.from({ length: coin.sparkline_in_7d.price.length }, (_, index) => index + 1),
+													datasets : [
+														{
+																label: 'Sales',
+																data: coin.sparkline_in_7d.price,
+																borderColor: coin.price_change_percentage_7d_in_currency > 0 ? '#5cf7ac' : '#fa1148',
+																borderWidth: 1.5, // Optional: Border width of the bars/points
+																pointRadius: 0,
+														}
+													]
+												}} options={options}/>
+											</div>
+											</div>
+										</TableCell>
 									</TableRow>
 								)
 							})
