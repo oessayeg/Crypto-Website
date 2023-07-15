@@ -13,6 +13,8 @@ import Paper from '@mui/material/Paper'
 import { Chart } from "chart.js/auto"
 import { Line } from "react-chartjs-2"
 import newsData from "./News.js"
+import coinGecko from "./usedApiIcon1.png"
+import newsApi from "./apiIcon2.png"
 
 // Colors
 // blue : #0074D9
@@ -202,8 +204,13 @@ function Home(props) {
 				</div>
 				}
 			</div>
+			<hr />
 			<div id="used-apis">
-
+				<h2 align="center">Used apis</h2>
+				<div id="api-icons">
+					<img src={coinGecko} width="300px"/>
+					<img src={newsApi} width="300px"/>
+				</div>
 			</div>
 		</main>
 	);
