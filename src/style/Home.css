@@ -125,3 +125,73 @@ main
 	align-items: center;
 	gap: 20px;
 }
+
+#news-header
+{
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	padding-left : 15px;
+	padding-right : 15px;
+}
+
+#news-example
+{
+	margin-bottom: 80px;
+	padding-left: 24px;
+	padding-right: 24px;
+}
+
+#some-news
+{
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 30px;
+}
+
+#some-news > div > img
+{
+	object-fit: contain;
+	width: 100%;
+}
+
+#some-news > div > h2
+{
+	margin: 0;
+}
+
+#some-news > div:hover
+{
+	text-decoration: underline;
+	cursor: pointer;
+	box-shadow: 1px 1px 5px black;
+	box-sizing: border-box;
+}
+
+#some-news > div
+{
+	transition: box-shadow 0.6s ease;
+	position: relative;
+}
+
+#some-news > div > p
+{
+	font-size: 20px;
+	padding: 15px;
+	margin-top: 10px;
+}
+
+#some-news > div > h2
+{
+	padding: 11px;
+}
+
+/* #some-news > div > h5
+{
+	position: absolute;
+	bottom: -2;
+	right: 0;
+	padding-right: 15px;
+	padding-bottom: 15px;
+} */

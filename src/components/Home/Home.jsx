@@ -12,6 +12,14 @@ import { useState } from "react"
 import Paper from '@mui/material/Paper'
 import { Chart } from "chart.js/auto"
 import { Line } from "react-chartjs-2"
+import newsData from "./News.js"
+
+// Colors
+// blue : #0074D9
+// text : #333333
+// background : #F9F9F9
+// gold : #FFD700
+// green : #2ECC40
 
 const options = {
 	responsive: true,
@@ -34,29 +42,33 @@ const options = {
 	},
   };
 
-// Colors
-// blue : #0074D9
-// text : #333333
-// background : #F9F9F9
-// gold : #FFD700
-// green : #2ECC40
 
 function Home(props) {
 
 	const [data, setData] = useState(null);
 	const [gotData, setGotData] = useState(false);
+	const [allNews, setNews] = useState(null);
+	const [gotNews, setGotNews] = useState(false);
+	const [newsExample, setNewsExample] = useState(null);
 
 	useEffect(() => {
 		setData(crData);
+		setNews(newsData.articles.filter(article => (article.author && article.urlToImage) ? article : ""))
 	}, []);
 
 	useEffect(() => {
 		if (data)
-		{
-			console.log(data);
 			setGotData(true);
-		}
 	}, [data]);
+	
+	useEffect(() => {
+		if (allNews)
+		{
+			console.log(allNews);
+			setGotNews(true);
+			setNewsExample(allNews.slice(0, 5));
+		}
+	}, [allNews])
 
 	return (
 		<main>
@@ -163,9 +175,42 @@ function Home(props) {
 					</Table>
 				</TableContainer>
 			</div>
+			<div id="news-example">
+				<div id="news-header">
+						<h4>News</h4>
+						<Link to="/news">See all</Link>
+				</div>
+				{!gotNews ? <h1>Waiting for the news api</h1> :
+				<div id="some-news">
+					<div onClick={() => window.open(newsExample[0].url, "_blank")}>
+						<img src={newsExample[0].urlToImage}/>
+						<h2>{newsExample[0].title}</h2>
+						<p>{newsExample[0].description}</p>
+						{/* <h5 style={{margin : "0"}}>Author : {newsExample[0].author}</h5> */}
+						{/* <p align="right">Published at : {newsExample[0].publishedAt}</p> */}
+					</div>
+					<div onClick={() => window.open(newsExample[1].url, "_blank")}>
+						<img src={newsExample[1].urlToImage}/>
+						<h2>{newsExample[1].title}</h2>
+						<p>{newsExample[1].description}</p>
+						{/* <h5 style={{margin : "0"}}>Author : {newsExample[0].author}</h5> */}
+						{/* <p align="right">Published at : {newsExample[1].publishedAt}</p> */}
+					</div>
+					<div onClick={() => window.open(newsExample[4].url, "_blank")}>
+						<img src={newsExample[4].urlToImage}/>
+						<h2>{newsExample[4].title}</h2>
+						<p>{newsExample[4].description}</p>
+						{/* <h5 style={{margin : "0"}}>Author : {newsExample[2].author}</h5> */}
+						{/* <p align="right">Published at : {newsExample[2].publishedAt}</p> */}
+					</div>
+				</div>
+				}
+			</div>
+			<div id="used-apis">
+
+			</div>
 		</main>
 	);
-
 }
 
 export default Home;
