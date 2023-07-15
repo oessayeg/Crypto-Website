@@ -40,6 +40,11 @@ main
 	width: 50%;
 }
 
+#call-to-use
+{
+	margin-top: 90px;
+}
+
 #call-to-use > h4, #call-to-use > h2
 {
 	text-align: center;
@@ -174,7 +179,7 @@ main
 	transition: box-shadow 0.6s ease;
 	padding-bottom: 50px;
 	position: relative;
-
+	background-color: white;
 }
 
 #some-news > div > p
@@ -199,6 +204,7 @@ main
 	padding-right: 15px;
 	padding-bottom: 15px;
 }
+
 #used-apis
 {
 	margin-top: 80px;
@@ -212,3 +218,19 @@ main
 	flex-direction: row;
 	justify-content: space-around;
 }
+/* 
+#to-top
+{
+	display: flex;
+	justify-content: right;
+	align-items: center;
+	cursor: pointer;
+	margin-right: 60px;
+}
+
+#to-top > img
+{
+	border: 1px solid #0074D9;
+	border-radius: 50%;
+	padding: 4px;
+} */

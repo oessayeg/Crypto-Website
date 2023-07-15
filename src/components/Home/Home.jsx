@@ -1,5 +1,6 @@
 import React from "react"
-import heroImage from "./heroImage.gif"
+// import heroImage from "./heroImage.gif"
+import heroImage from "./heroImage.png"
 import "../../style/Home.css"
 import { Link } from "react-router-dom"
 import news from "./newspaper.png"
@@ -15,12 +16,15 @@ import { Line } from "react-chartjs-2"
 import newsData from "./News.js"
 import coinGecko from "./usedApiIcon1.png"
 import newsApi from "./apiIcon2.png"
+import blueArrow from "./blueArrow.png"
+import whiteArrow from "./whiteArrow.png"
+import { blue } from "@mui/material/colors"
 
 // Colors
 // blue : #0074D9
 // text : #333333
 // background : #F9F9F9
-// gold : #FFD700
+// gold : #FFD700, #ffbf00
 // green : #2ECC40
 
 const options = {
@@ -52,6 +56,7 @@ function Home(props) {
 	const [allNews, setNews] = useState(null);
 	const [gotNews, setGotNews] = useState(false);
 	const [newsExample, setNewsExample] = useState(null);
+	const [toTop, setToTop] = useState(false);
 
 	useEffect(() => {
 		setData(crData);
@@ -82,8 +87,9 @@ function Home(props) {
 						<Link to="/cryptocurrencies">Market</Link>
 					</div>
 				</div>
-					<img src={heroImage}/>
+					<img src={heroImage} width="500px" height="500px"/>
 			</div>
+			<hr></hr>
 			<div id="call-to-use">
 				<h4>Why choose Crypto Website ?</h4>
 				<h2>Unlock the power of crypto with real-time market data and breaking news !</h2>
@@ -113,7 +119,7 @@ function Home(props) {
 			</div>
 			<div id="crypto-data-examples">
 				<div id="crypto-data-example-head">
-					<h4>Popular cryptocurrencies</h4>
+					<h3>Popular cryptocurrencies</h3>
 					<Link to="cryptocurrencies">See all</Link>
 				</div>
 				<TableContainer  component={Paper}>
@@ -132,7 +138,7 @@ function Home(props) {
 						</TableHead>
 					<TableBody>
 						{
-							!gotData ? <p>Waiting for data</p> :
+							!gotData ? <div>Waiting for data</div> :
 
 							data.slice(0, 5).map(coin => {
 								return (
@@ -178,7 +184,7 @@ function Home(props) {
 			</div>
 			<div id="news-example">
 				<div id="news-header">
-						<h4>News</h4>
+						<h3>News</h3>
 						<Link to="/news">See all</Link>
 				</div>
 				{!gotNews ? <h1>Waiting for the news api</h1> :
@@ -208,10 +214,13 @@ function Home(props) {
 			<div id="used-apis">
 				<h2 align="center">Used apis</h2>
 				<div id="api-icons">
-					<img src={coinGecko} width="300px"/>
-					<img src={newsApi} width="300px"/>
+					<a href="https://www.coingecko.com/en/api" target="_blank"><img src={coinGecko} width="300px"/></a>
+					<a href="https://newsapi.org/" target="_blank"><img src={newsApi} width="300px"/></a>
 				</div>
 			</div>
+			{/* <div id="to-top">
+				<img src={toTop ? whiteArrow : blueArrow}/>
+			</div> */}
 		</main>
 	);
 }

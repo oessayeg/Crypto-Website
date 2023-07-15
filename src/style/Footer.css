@@ -4,17 +4,14 @@ footer
 
 }
 
-footer > p
-{
-	margin: 0;
-}
-
 #footer-last-part
 {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+	padding-top: 13px;
+	padding-bottom: 13px;
 }
 
 .author
@@ -25,7 +22,36 @@ footer > p
 	gap: 10px;
 }
 
-footer > p
+.author
 {
-	margin: 0;
+	margin-bottom: 0px;
+	margin-top: 5px;
+}
+
+.copyright
+{
+	margin-bottom: 0;
+	margin-top: 8px;
+}
+
+.author > a
+{
+	transition: all 0.5s ease;
+}
+
+.author > a:hover
+{
+	cursor: pointer;
+	transform: scale(1.15);
+}
+
+#footer-last-part
+{
+	margin-top: -20px;
+}
+
+#footer-last-part > p
+{
+	color: white;
+	font-size: 16px;
 }
