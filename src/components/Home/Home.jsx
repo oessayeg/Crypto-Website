@@ -64,7 +64,6 @@ function Home(props) {
 	useEffect(() => {
 		if (allNews)
 		{
-			console.log(allNews);
 			setGotNews(true);
 			setNewsExample(allNews.slice(0, 5));
 		}
@@ -186,22 +185,19 @@ function Home(props) {
 						<img src={newsExample[0].urlToImage}/>
 						<h2>{newsExample[0].title}</h2>
 						<p>{newsExample[0].description}</p>
-						{/* <h5 style={{margin : "0"}}>Author : {newsExample[0].author}</h5> */}
-						{/* <p align="right">Published at : {newsExample[0].publishedAt}</p> */}
+						<h5 style={{margin : "0", textAlign :"right", paddingTop: "0px"}}>Author : {newsExample[0].author}</h5>
 					</div>
 					<div onClick={() => window.open(newsExample[1].url, "_blank")}>
 						<img src={newsExample[1].urlToImage}/>
 						<h2>{newsExample[1].title}</h2>
 						<p>{newsExample[1].description}</p>
-						{/* <h5 style={{margin : "0"}}>Author : {newsExample[0].author}</h5> */}
-						{/* <p align="right">Published at : {newsExample[1].publishedAt}</p> */}
+						<h5 style={{margin : "0"}}>Author : {newsExample[1].author}</h5>
 					</div>
-					<div onClick={() => window.open(newsExample[4].url, "_blank")}>
-						<img src={newsExample[4].urlToImage}/>
-						<h2>{newsExample[4].title}</h2>
-						<p>{newsExample[4].description}</p>
-						{/* <h5 style={{margin : "0"}}>Author : {newsExample[2].author}</h5> */}
-						{/* <p align="right">Published at : {newsExample[2].publishedAt}</p> */}
+					<div onClick={() => window.open(newsExample[2].url, "_blank")}>
+						<img src={newsExample[2].urlToImage}/>
+						<h2>{newsExample[2].title}</h2>
+						<p>{newsExample[2].description}</p>
+						<h5 style={{margin : "0"}}>Author : {newsExample[2].author}</h5>
 					</div>
 				</div>
 				}
