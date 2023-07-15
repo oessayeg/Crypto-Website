@@ -1,0 +1,31 @@
+footer
+{
+	background-color:  #0074D9;
+
+}
+
+footer > p
+{
+	margin: 0;
+}
+
+#footer-last-part
+{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.author
+{
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	gap: 10px;
+}
+
+footer > p
+{
+	margin: 0;
+}
