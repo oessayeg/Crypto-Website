@@ -1,7 +1,7 @@
 import React from "react";
 import "../../style/Header.css";
 import { Link } from "react-router-dom";
-import lightMode from "./images/lightMode.png";
+import lightMode from "./images/lightMode2.png";
 
 function Header() {
 	// The header will have its own color and the background a little bit similar	
@@ -9,7 +9,7 @@ function Header() {
 		<header>
 			<div>
 				{/* <img></img> */}
-				<h1>Crypto Website</h1>
+				<Link to="/">Crypto Website</Link>
 			</div>
 			<ul>
 				<li>

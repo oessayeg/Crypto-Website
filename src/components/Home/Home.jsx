@@ -19,6 +19,7 @@ import newsApi from "./apiIcon2.png"
 import blueArrow from "./blueArrow.png"
 import whiteArrow from "./whiteArrow.png"
 import { blue } from "@mui/material/colors"
+import rightArrow from "./arrowRight2.png"
 
 // Colors
 // blue : #0074D9
@@ -80,14 +81,14 @@ function Home(props) {
 		<main>
 			<div id="hero">
 				<div id="hero-text">
-					<h2>Read cryptocurrency news and track market data,&nbsp; easily.</h2>
+					<h2>Read cryptocurrency news and track market data,&nbsp; <span className="easy-word">easily.</span></h2>
 					<p>Stay updated, seize opportunities, and conquer the crypto world!</p>
 					<div id="call-to-action-buttons">
 						<Link to="/news">News</Link>
 						<Link to="/cryptocurrencies">Market</Link>
 					</div>
 				</div>
-					<img src={heroImage} width="500px" height="500px"/>
+					<img src={heroImage} width="545px" height="545px"/>
 			</div>
 			<hr></hr>
 			<div id="call-to-use">
@@ -120,11 +121,11 @@ function Home(props) {
 			<div id="crypto-data-examples">
 				<div id="crypto-data-example-head">
 					<h3>Popular cryptocurrencies</h3>
-					<Link to="cryptocurrencies">See all</Link>
+					<Link to="cryptocurrencies">See all <img src={rightArrow} width="30px"/></Link>
 				</div>
 				<TableContainer  component={Paper}>
 					<Table sx={{ minWidth: 650 }} aria-label="Table of crypto market data">
-						<TableHead>
+						<TableHead style={{backgroundColor: "#18d689"}}>
 							<TableRow>
 								<TableCell><strong>Coin</strong></TableCell>
 								<TableCell align="right"><strong>Price</strong></TableCell>
@@ -143,7 +144,7 @@ function Home(props) {
 							data.slice(0, 5).map(coin => {
 								return (
 								<TableRow key={coin.name} sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
-										<TableCell component="th" scope="row">
+										<TableCell component="th" scope="row" paddingTop="0">
 											<div id="coin-name-block">
 												<img src={coin.image} width="32px" height="32px"/>
 												<p>{coin.name}</p>
@@ -185,7 +186,7 @@ function Home(props) {
 			<div id="news-example">
 				<div id="news-header">
 						<h3>News</h3>
-						<Link to="/news">See all</Link>
+						<Link to="/news">See all <img src={rightArrow} width="30"/> </Link>
 				</div>
 				{!gotNews ? <h1>Waiting for the news api</h1> :
 				<div id="some-news">

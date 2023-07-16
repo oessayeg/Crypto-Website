@@ -17,7 +17,8 @@ main
 
 #hero-text > h2
 {
-	font-size: 35px;
+	font-size: 42px;
+	margin-bottom: 0;
 }
 
 
@@ -35,9 +36,41 @@ main
 	gap: 20px;
 }
 
+#call-to-action-buttons > a
+{
+	color: white;
+	font-size: 22px;
+	padding: 5px;
+	border-radius: 8px;
+	width: 100px;
+	padding-left: 20px;
+	padding-right: 20px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	margin-top: 20px;
+	text-align: center;
+	background-color: #333333;
+	color: white;
+	transition: all 0.5s ease;
+	border: 2px solid #333333;
+}
+
+#call-to-action-buttons > a:hover
+{
+	color: #333333;
+	background-color: white;
+	transform: scale(1.03);
+}
+
+#call-to-action-buttons > a:active
+{
+	background-color: #333333;
+	color: white;
+}
+
 #hero-text
 {
-	width: 50%;
+	width: 45%;
 }
 
 #call-to-use
@@ -64,10 +97,11 @@ main
 
 #why-points > div
 {
-	border: 2px solid black;
+	border: 1px solid #333333;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	background-color: white;
 }
 
 .first-point
@@ -98,12 +132,13 @@ main
 	text-align: center;
 	margin-top: 10px;
 	margin-bottom: 24px;
+	font-weight: 900;
 }
 
 #why-points > div > div > p
 {
 	margin: 20px;
-	font-size: 20px;
+	font-size: 19px;
 }
 
 #crypto-data-examples
@@ -184,7 +219,7 @@ main
 
 #some-news > div > p
 {
-	font-size: 21px;
+	font-size: 17px;
 	padding: 15px;
 	margin-top: 0px;
 }
@@ -218,19 +253,30 @@ main
 	flex-direction: row;
 	justify-content: space-around;
 }
-/* 
-#to-top
+
+#crypto-data-example-head > a, #news-header > a
 {
 	display: flex;
-	justify-content: right;
 	align-items: center;
-	cursor: pointer;
-	margin-right: 60px;
+	justify-content: center;
+	color: black;
+	font-size: 18px;
+	transition: all 0.4s ease;
 }
 
-#to-top > img
+#crypto-data-example-head > a:hover, #news-header > a:hover
 {
-	border: 1px solid #0074D9;
-	border-radius: 50%;
-	padding: 4px;
-} */
+	margin-right: 10px;
+}
+
+#crypto-data-examples > a > img
+{
+	margin-right: 30px;
+}
+
+.easy-word
+{
+	background: linear-gradient(to right, #0074D9, #59ff91);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
