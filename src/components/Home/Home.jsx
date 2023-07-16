@@ -215,8 +215,8 @@ function Home(props) {
 			<div id="used-apis">
 				<h2 align="center">Used apis</h2>
 				<div id="api-icons">
-					<a href="https://www.coingecko.com/en/api" target="_blank"><img src={coinGecko} width="300px"/></a>
-					<a href="https://newsapi.org/" target="_blank"><img src={newsApi} width="300px"/></a>
+					<a href="https://www.coingecko.com/en/api" target="_blank"><img src={coinGecko} width="220px"/></a>
+					<a href="https://newsapi.org/" target="_blank"><img src={newsApi} width="220px"/></a>
 				</div>
 			</div>
 			{/* <div id="to-top">

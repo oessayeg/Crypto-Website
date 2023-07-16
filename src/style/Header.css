@@ -29,7 +29,7 @@ header > ul
 	margin: 0;
 	align-items: center;
 	justify-content: space-around;
-	margin-left: 50px;
+	margin-left: 100px;
 }
 
 .last-li
@@ -38,12 +38,22 @@ header > ul
 	align-items: center;
 	justify-content: center;
 	cursor: pointer;
-	margin-left: 40px;
+	margin-left: 45px;
+	padding: 7px;
+	border: 1px solid white;
+	border-radius: 50%;
+	transition: border 0.5s ease;
+	transition: background-color 0.5s ease;
 }
 
 .last-li:hover::after
 {
 	width: 0%;
+}
+
+.last-li:active
+{
+	opacity: 0.8;
 }
 
 header > ul > li:after
@@ -55,6 +65,12 @@ header > ul > li:after
 	display: block;
 	transition: all 0.4s ease;
 	bottom: -10%;
+}
+
+.last-li:hover
+{
+	border: 1px solid white;
+	background-color: white;
 }
 
 header > ul > li:hover::after

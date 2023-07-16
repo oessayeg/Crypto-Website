@@ -1,10 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import "../../style/Header.css";
 import { Link } from "react-router-dom";
-import lightMode from "./images/lightMode2.png";
+import lightModeWhite from "./images/lightMode2.png";
+import lightModeBlack from "./images/lightMode.png";
+import nightModeWhite from "./images/nightMode.png";
+import nightModeBlack from "./images/nightModeBlack.png";
 
 function Header() {
 	// The header will have its own color and the background a little bit similar	
+	const [isHovered, setIsHovered] = useState(false);
+
 	return (
 		<header>
 			<div>
@@ -21,8 +26,8 @@ function Header() {
 				<li>
 					<Link to="/cryptocurrencies">Market</Link>
 				</li>
-				<li className="last-li">
-					<img src={lightMode} width="23px"/>
+				<li className="last-li" onMouseMove={(e) => setIsHovered(true)} onMouseLeave={(e) => setIsHovered(false)}>
+					<img src={!isHovered ? nightModeWhite : nightModeBlack} width="23px"/>
 				</li>
 			</ul>
 		</header>
