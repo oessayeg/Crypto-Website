@@ -49,13 +49,13 @@ main
 	padding-bottom: 7px;
 	margin-top: 20px;
 	text-align: center;
-	background-color: #333333;
+	background: linear-gradient(to left, #7d5e00, #333333);
 	transition: background-color, transform 0.5s ease;
 }
 
 #call-to-action-buttons > a:hover
 {
-	background-color: #f0b400;
+	background-color: #FFBF00;
 	transform: scale(1.04);
 }
 
@@ -93,7 +93,7 @@ main
 
 #why-points > div
 {
-	border: 1px solid #333333;
+	/* border: 1px solid #333333; */
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -129,12 +129,14 @@ main
 	margin-top: 10px;
 	margin-bottom: 24px;
 	font-weight: 900;
+	color: #333333;
 }
 
 #why-points > div > div > p
 {
 	margin: 20px;
 	font-size: 19px;
+	color: #333333;
 }
 
 #crypto-data-examples
@@ -273,7 +275,7 @@ main
 
 #crypto-data-example-head > a:hover img, #news-header > a:hover img
 {
-	margin-left: 12px;
+	margin-left: 15px;
 }
 
 #crypto-data-example-head > a:active, #news-header > a:active

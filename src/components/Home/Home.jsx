@@ -3,9 +3,9 @@ import React from "react"
 import heroImage from "./hero2.png"
 import "../../style/Home.css"
 import { Link } from "react-router-dom"
-import news from "./newspaper.png"
-import time from "./time.png"
-import handshake from "./handshake.png"
+import news from "./newspaper2.png"
+import time from "./time3.png"
+import handshake from "./handshake2.png"
 import { Table, TableContainer, TableHead, TableRow, TableCell, TableBody } from "@mui/material"
 import crData from "./Data"
 import { useEffect } from "react"
@@ -16,9 +16,6 @@ import { Line } from "react-chartjs-2"
 import newsData from "./News.js"
 import coinGecko from "./usedApiIcon1.png"
 import newsApi from "./apiIcon2.png"
-import blueArrow from "./blueArrow.png"
-import { blue } from "@mui/material/colors"
-import rightArrow from "./arrowRight2.png"
 import whiteArrowRight from "./whiteArrowRight.png"
 
 // Colors
@@ -140,22 +137,22 @@ function Home(props) {
 						{
 							!gotData ? <div>Waiting for data</div> :
 
-							data.slice(0, 5).map(coin => {
+							data.slice(0, 7).map(coin => {
 								return (
-								<TableRow key={coin.name} sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
-										<TableCell component="th" scope="row" paddingTop="0">
+								<TableRow key={coin.name} sx={{ '&:last-child td, &:last-child th': { border: 0 } }} >
+										<TableCell component="th" scope="row" paddingTop="0" style={{padding: "8px", paddingLeft : "16px"}}>
 											<div id="coin-name-block">
 												<img src={coin.image} width="32px" height="32px"/>
 												<p>{coin.name}</p>
 											</div>
 										</TableCell>
-										<TableCell align="right">$ {coin.current_price > 1 ? coin.current_price.toFixed(2) : coin.current_price.toFixed(5)}</TableCell>
-										<TableCell align="right" >{coin.price_change_percentage_1h_in_currency.toFixed(2)}%</TableCell>
-										<TableCell align="right" >{coin.price_change_percentage_7d_in_currency.toFixed(2)}%</TableCell>
-										<TableCell align="right" >{coin.price_change_percentage_30d_in_currency.toFixed(2)}%</TableCell>
-										<TableCell align="right" >{coin.total_volume}</TableCell>
-										<TableCell align="right" >$ {Math.ceil(coin.current_price * coin.circulating_supply)}</TableCell>
-										<TableCell align="right" style={{paddingRight: "0"}}>
+										<TableCell align="right" style={{padding: "8px"}}>$ {coin.current_price > 1 ? coin.current_price.toFixed(2) : coin.current_price.toFixed(5)}</TableCell>
+										<TableCell align="right" style={{padding: "8px"}}>{coin.price_change_percentage_1h_in_currency.toFixed(2)}%</TableCell>
+										<TableCell align="right" style={{padding: "8px"}}>{coin.price_change_percentage_7d_in_currency.toFixed(2)}%</TableCell>
+										<TableCell align="right" style={{padding: "8px"}}>{coin.price_change_percentage_30d_in_currency.toFixed(2)}%</TableCell>
+										<TableCell align="right" style={{padding: "8px"}}>{coin.total_volume}</TableCell>
+										<TableCell align="right" style={{padding: "8px"}}>$ {Math.ceil(coin.current_price * coin.circulating_supply)}</TableCell>
+										<TableCell align="right" style={{paddingRight: "0", paddingTop: "8px", paddingBottom: "8px", paddingLeft: "8px"}}>
 											<div style={{display: "flex", justifyContent: "center"}}>
 											<div style={{width:"120px", height:"50px", display: "flex"}}>
 												<Line data={{
