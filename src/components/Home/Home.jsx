@@ -140,18 +140,18 @@ function Home(props) {
 							data.slice(0, 7).map(coin => {
 								return (
 								<TableRow key={coin.name} sx={{ '&:last-child td, &:last-child th': { border: 0 } }} >
-										<TableCell component="th" scope="row" paddingTop="0" style={{padding: "8px", paddingLeft : "16px"}}>
+										<TableCell component="th" scope="row" paddingTop="0" style={{padding: "8px", paddingLeft : "16px", fontFamily: "'Montserrat', sans-serif"}}>
 											<div id="coin-name-block">
 												<img src={coin.image} width="32px" height="32px"/>
 												<p>{coin.name}</p>
 											</div>
 										</TableCell>
-										<TableCell align="right" style={{padding: "8px"}}>$ {coin.current_price > 1 ? coin.current_price.toFixed(2) : coin.current_price.toFixed(5)}</TableCell>
-										<TableCell align="right" style={{padding: "8px"}}>{coin.price_change_percentage_1h_in_currency.toFixed(2)}%</TableCell>
-										<TableCell align="right" style={{padding: "8px"}}>{coin.price_change_percentage_7d_in_currency.toFixed(2)}%</TableCell>
-										<TableCell align="right" style={{padding: "8px"}}>{coin.price_change_percentage_30d_in_currency.toFixed(2)}%</TableCell>
-										<TableCell align="right" style={{padding: "8px"}}>{coin.total_volume}</TableCell>
-										<TableCell align="right" style={{padding: "8px"}}>$ {Math.ceil(coin.current_price * coin.circulating_supply)}</TableCell>
+										<TableCell align="right" style={{ padding: "8px", fontFamily: "'Montserrat', sans-serif" }}>${coin.current_price > 1 ? coin.current_price.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") : coin.current_price.toFixed(5)}</TableCell>
+										<TableCell align="right" style={{padding: "8px", fontFamily: "'Montserrat', sans-serif"}}><span style={{color : coin.price_change_percentage_1h_in_currency > 0 ? "#139c23" : "#f71414"}}>{coin.price_change_percentage_1h_in_currency.toFixed(2)}%</span></TableCell>
+										<TableCell align="right" style={{padding: "8px", fontFamily: "'Montserrat', sans-serif"}}><span style={{color : coin.price_change_percentage_7d_in_currency > 0 ? "#139c23" : "#f71414"}}>{coin.price_change_percentage_7d_in_currency.toFixed(2)}%</span></TableCell>
+										<TableCell align="right" style={{padding: "8px", fontFamily: "'Montserrat', sans-serif"}}><span style={{color : coin.price_change_percentage_30d_in_currency > 0 ? "#139c23" : "#f71414"}}>{coin.price_change_percentage_30d_in_currency.toFixed(2)}%</span></TableCell>
+										<TableCell align="right" style={{padding: "8px", fontFamily: "'Montserrat', sans-serif"}}>{coin.total_volume.toLocaleString().replaceAll(/\s/g, ",")}</TableCell>
+										<TableCell align="right" style={{padding: "8px", fontFamily: "'Montserrat', sans-serif"}}>${Math.ceil(coin.current_price * coin.circulating_supply).toLocaleString().replaceAll(/\s/g, ',')}</TableCell>
 										<TableCell align="right" style={{paddingRight: "0", paddingTop: "8px", paddingBottom: "8px", paddingLeft: "8px"}}>
 											<div style={{display: "flex", justifyContent: "center"}}>
 											<div style={{width:"120px", height:"50px", display: "flex"}}>
@@ -161,7 +161,7 @@ function Home(props) {
 														{
 																label: 'Sales',
 																data: coin.sparkline_in_7d.price,
-																borderColor: coin.price_change_percentage_7d_in_currency > 0 ? '#2ECC40' : '#fa1148',
+																borderColor: coin.price_change_percentage_7d_in_currency > 0 ? '#2ECC40' : '#f71414',
 																borderWidth: 1.5, // Optional: Border width of the bars/points
 																pointRadius: 0,
 														}
