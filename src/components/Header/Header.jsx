@@ -1,10 +1,11 @@
-import React, { useState } from "react";
-import "../../style/Header.css";
-import { Link } from "react-router-dom";
-import lightModeWhite from "./images/lightMode2.png";
-import lightModeBlack from "./images/lightMode.png";
-import nightModeWhite from "./images/nightMode.png";
-import nightModeBlack from "./images/nightModeBlack.png";
+import React, { useState } from "react"
+import "../../style/Header.css"
+import { Link } from "react-router-dom"
+import lightModeWhite from "./images/lightMode2.png"
+import lightModeBlack from "./images/lightMode.png"
+import nightModeWhite from "./images/nightMode.png"
+import nightModeBlack from "./images/nightModeBlack.png"
+import ethereum from "./images/binanceIcon.png"
 
 function Header() {
 	// The header will have its own color and the background a little bit similar	
@@ -13,7 +14,7 @@ function Header() {
 	return (
 		<header>
 			<div>
-				{/* <img></img> */}
+				<img src={ethereum} width="50px"></img>
 				<Link to="/">Crypto Website</Link>
 			</div>
 			<ul>

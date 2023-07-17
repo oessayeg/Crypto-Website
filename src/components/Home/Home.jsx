@@ -1,6 +1,6 @@
 import React from "react"
 // import heroImage from "./heroImage.gif"
-import heroImage from "./heroImage.png"
+import heroImage from "./hero2.png"
 import "../../style/Home.css"
 import { Link } from "react-router-dom"
 import news from "./newspaper.png"
@@ -17,14 +17,14 @@ import newsData from "./News.js"
 import coinGecko from "./usedApiIcon1.png"
 import newsApi from "./apiIcon2.png"
 import blueArrow from "./blueArrow.png"
-import whiteArrow from "./whiteArrow.png"
 import { blue } from "@mui/material/colors"
 import rightArrow from "./arrowRight2.png"
+import whiteArrowRight from "./whiteArrowRight.png"
 
 // Colors
 // blue : #0074D9
 // text : #333333
-// background : #F9F9F9
+// background : #F9F9F9 or #F5F5F5
 // gold : #FFD700, #ffbf00
 // green : #2ECC40
 
@@ -57,7 +57,6 @@ function Home(props) {
 	const [allNews, setNews] = useState(null);
 	const [gotNews, setGotNews] = useState(false);
 	const [newsExample, setNewsExample] = useState(null);
-	const [toTop, setToTop] = useState(false);
 
 	useEffect(() => {
 		setData(crData);
@@ -82,7 +81,7 @@ function Home(props) {
 			<div id="hero">
 				<div id="hero-text">
 					<h2>Read cryptocurrency news and track market data,&nbsp; <span className="easy-word">easily.</span></h2>
-					<p>Stay updated, seize opportunities, and conquer the crypto world!</p>
+					<p>Stay updated, seize opportunities, and conquer the crypto world !</p>
 					<div id="call-to-action-buttons">
 						<Link to="/news">News</Link>
 						<Link to="/cryptocurrencies">Market</Link>
@@ -121,11 +120,11 @@ function Home(props) {
 			<div id="crypto-data-examples">
 				<div id="crypto-data-example-head">
 					<h3>Popular cryptocurrencies</h3>
-					<Link to="cryptocurrencies">See all <img src={rightArrow} width="30px"/></Link>
+					<Link to="cryptocurrencies">See all <img src={whiteArrowRight}/></Link>
 				</div>
 				<TableContainer  component={Paper}>
 					<Table sx={{ minWidth: 650 }} aria-label="Table of crypto market data">
-						<TableHead style={{backgroundColor: "#18d689"}}>
+						<TableHead style={{backgroundColor: "#ffbf00"}}>
 							<TableRow>
 								<TableCell><strong>Coin</strong></TableCell>
 								<TableCell align="right"><strong>Price</strong></TableCell>
@@ -165,7 +164,7 @@ function Home(props) {
 														{
 																label: 'Sales',
 																data: coin.sparkline_in_7d.price,
-																borderColor: coin.price_change_percentage_7d_in_currency > 0 ? '#5cf7ac' : '#fa1148',
+																borderColor: coin.price_change_percentage_7d_in_currency > 0 ? '#2ECC40' : '#fa1148',
 																borderWidth: 1.5, // Optional: Border width of the bars/points
 																pointRadius: 0,
 														}
@@ -186,7 +185,7 @@ function Home(props) {
 			<div id="news-example">
 				<div id="news-header">
 						<h3>News</h3>
-						<Link to="/news">See all <img src={rightArrow} width="30"/> </Link>
+						<Link to="/news">See all <img src={whiteArrowRight}/> </Link>
 				</div>
 				{!gotNews ? <h1>Waiting for the news api</h1> :
 				<div id="some-news">
@@ -219,9 +218,6 @@ function Home(props) {
 					<a href="https://newsapi.org/" target="_blank"><img src={newsApi} width="220px"/></a>
 				</div>
 			</div>
-			{/* <div id="to-top">
-				<img src={toTop ? whiteArrow : blueArrow}/>
-			</div> */}
 		</main>
 	);
 }

@@ -39,33 +39,29 @@ main
 #call-to-action-buttons > a
 {
 	color: white;
-	font-size: 22px;
+	font-size: 20px;
 	padding: 5px;
 	border-radius: 8px;
 	width: 100px;
 	padding-left: 20px;
 	padding-right: 20px;
-	padding-top: 5px;
-	padding-bottom: 5px;
+	padding-top: 7px;
+	padding-bottom: 7px;
 	margin-top: 20px;
 	text-align: center;
 	background-color: #333333;
-	color: white;
-	transition: all 0.5s ease;
-	border: 2px solid #333333;
+	transition: background-color, transform 0.5s ease;
 }
 
 #call-to-action-buttons > a:hover
 {
-	color: #333333;
-	background-color: white;
-	transform: scale(1.03);
+	background-color: #f0b400;
+	transform: scale(1.04);
 }
 
 #call-to-action-buttons > a:active
 {
-	background-color: #333333;
-	color: white;
+	opacity: 0.7;
 }
 
 #hero-text
@@ -261,12 +257,28 @@ main
 	justify-content: center;
 	color: black;
 	font-size: 18px;
-	transition: all 0.4s ease;
+	border: 1px solid #333333;
+	background-color: #333333;
+	color: white;
+	border-radius: 7px;
+	padding-left: 10px;
+	padding-right: 7px;
 }
 
-#crypto-data-example-head > a:hover, #news-header > a:hover
+#crypto-data-example-head > a img, #news-header > a img
 {
-	margin-right: 10px;
+	margin-left: 6px;
+	transition: margin-left 0.5s ease;
+}
+
+#crypto-data-example-head > a:hover img, #news-header > a:hover img
+{
+	margin-left: 12px;
+}
+
+#crypto-data-example-head > a:active, #news-header > a:active
+{
+	opacity: 0.8;
 }
 
 #crypto-data-examples > a > img
@@ -276,7 +288,7 @@ main
 
 .easy-word
 {
-	background: linear-gradient(to right, #0074D9, #59ff91);
+	background: linear-gradient(to right, #FFBF00, #333333);
 	-webkit-background-clip: text;
 	-webkit-text-fill-color: transparent;
 }
