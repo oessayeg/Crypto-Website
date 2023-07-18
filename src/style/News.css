@@ -38,7 +38,30 @@
 
 #news-section
 {
-
 	margin-left: 60px;
 	margin-right: 60px;
+}
+
+.first-subject-images
+{
+	object-fit: cover;
+	width: 100%;
+	height: 250px;
+}
+
+#first-subject-news
+{
+	padding-left: 10px;	
+	padding-right: 10px;	
+}
+
+#first-subject-image-wrapper
+{
+	display: flex;
+	justify-content: center;
+}
+
+.alice-carousel__stage
+{
+	align-items: center;
 }

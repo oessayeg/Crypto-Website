@@ -15,25 +15,33 @@ function News(props)
 	const [web3News, setWeb3News] = useState(null);
 	const [blockchainNews, setBlockchainNews] = useState(null);
 	const [landingCarousel, setLandingCarousel] = useState(null);
-
+	const [firstSubjCarousel, setFirstSubjCarousel] = useState(null);
+	
 	const [gotBitcoinNews, setGotBitcoinNews] = useState(false);
 	const [gotWeb3News, setGotWeb3News] = useState(false);
 	const [gotBlockchainNews, setGotBlockchainNews] = useState(false);
 	const [gotLandingCarousel, setGotLandingCarousel] = useState(false);
+	const [gotFirstSubjCarousel, setGotFirstSubjCarousel] = useState(false);
 
 	useEffect(() => {
 		setBitcoinNews(bitcoin.articles.filter(article => (article.author && article.urlToImage)).slice(5));
 		setLandingCarousel(bitcoin.articles.filter(article => (article.author && article.urlToImage)).slice(0, 5))
 		setWeb3News(web3.articles.filter(article => (article.author && article.urlToImage)));
-		setBlockchainNews(blockchain.articles.filter(article => (article.author && article.urlToImage)));
+		setBlockchainNews(blockchain.articles.filter(article => (article.author && article.urlToImage)).slice(8));
+		setFirstSubjCarousel(blockchain.articles.filter(article => (article.author && article.urlToImage)).slice(0, 8));
 	}, []);
 
 	useEffect(() => {
-		if (bitcoinNews)
+		if (firstSubjCarousel)
 		{
-			setGotBitcoinNews(true);
-			console.log(bitcoinNews);
+			setGotFirstSubjCarousel(true);
+			console.log(firstSubjCarousel);
 		}
+	}, [firstSubjCarousel]);
+
+	useEffect(() => {
+		if (bitcoinNews)
+			setGotBitcoinNews(true);
 	}, [bitcoinNews]);
 
 	useEffect(() => {
@@ -53,7 +61,7 @@ function News(props)
 
 	return (
 		<section id="news-section">
-			{gotBitcoinNews ? <AliceCarousel  autoPlay="true" animationDuration="500"  animationType="fadeout" autoPlayInterval="1000" infinite="true" 
+			{gotBitcoinNews ? <AliceCarousel  autoPlay="true" animationDuration="500"  animationType="fadeout" autoPlayInterval="5000" infinite="true" 
 			disableDotsControls="true" disableButtonsControls="true">
 				{landingCarousel.map(article => {
 				return (
@@ -74,9 +82,17 @@ function News(props)
 			<hr></hr>
 			<div>
 				<h3>Blockchain</h3>
-				<AliceCarousel>
-
-				</AliceCarousel>
+				{gotFirstSubjCarousel ? 
+				<AliceCarousel responsive={{ 0: {items : "3"}}} disableDotsControls="true" autoPlay="true" animationDuration="1000" autoPlayInterval="6000" infinite="true">
+					{firstSubjCarousel.filter(article => article.author != "msmash").map(article => {
+						return <div id="first-subject-news">
+							<div id="first-subject-image-wrapper" height="250px">
+								<img src={article.urlToImage} className="first-subject-images"/>
+							</div>
+								<h2>{article.title}</h2>
+							</div>
+					})}
+				</AliceCarousel> : <h1>Loading</h1>}
 			</div>
 		</section>
 	);
