@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import { Route, Routes } from "react-router-dom"
 import News from "./components/News/News"
 import Cryptocurrency from "./components/Cryptocurrencies/Cryptocurrency"
