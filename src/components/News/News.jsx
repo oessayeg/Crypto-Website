@@ -2,9 +2,6 @@ import React, { useEffect, useState } from "react"
 import bitcoin from "./Bitcoin"
 import web3 from "./Web3"
 import blockchain from "./Blockchain"
-import icon1 from "../Home/time4.png"
-import icon2 from "../Home/newspaper2.png"
-import icon3 from "../Home/handshake2.png"
 import 'react-alice-carousel/lib/alice-carousel.css'
 import AliceCarousel from "react-alice-carousel"
 import "../../style/News.css"
@@ -16,27 +13,27 @@ function News(props)
 	const [blockchainNews, setBlockchainNews] = useState(null);
 	const [landingCarousel, setLandingCarousel] = useState(null);
 	const [firstSubjCarousel, setFirstSubjCarousel] = useState(null);
+	const [secondSubjectCarousel, setSecondObjectCarousel] = useState(null);
 	
 	const [gotBitcoinNews, setGotBitcoinNews] = useState(false);
 	const [gotWeb3News, setGotWeb3News] = useState(false);
 	const [gotBlockchainNews, setGotBlockchainNews] = useState(false);
 	const [gotLandingCarousel, setGotLandingCarousel] = useState(false);
 	const [gotFirstSubjCarousel, setGotFirstSubjCarousel] = useState(false);
-
+	const [gotSecondSubjectCarousel, setGotSecondSubjectCarousel] = useState(false);
+	
 	useEffect(() => {
 		setBitcoinNews(bitcoin.articles.filter(article => (article.author && article.urlToImage)).slice(5));
-		setLandingCarousel(bitcoin.articles.filter(article => (article.author && article.urlToImage)).slice(0, 5))
-		setWeb3News(web3.articles.filter(article => (article.author && article.urlToImage)));
+		setLandingCarousel(bitcoin.articles.filter(article => (article.author && article.urlToImage)).slice(0, 5));
+		setWeb3News(web3.articles.filter(article => (article.author && article.urlToImage)).slice(7));
 		setBlockchainNews(blockchain.articles.filter(article => (article.author && article.urlToImage)).slice(8));
 		setFirstSubjCarousel(blockchain.articles.filter(article => (article.author && article.urlToImage)).slice(0, 8));
+		setSecondObjectCarousel(web3.articles.filter(article => (article.author && article.urlToImage)).slice(10, 18));
 	}, []);
 
 	useEffect(() => {
 		if (firstSubjCarousel)
-		{
 			setGotFirstSubjCarousel(true);
-			console.log(firstSubjCarousel);
-		}
 	}, [firstSubjCarousel]);
 
 	useEffect(() => {
@@ -59,6 +56,14 @@ function News(props)
 			setGotLandingCarousel(true);
 	}, [landingCarousel]);
 
+	useEffect(() => {
+		if (secondSubjectCarousel)
+		{
+			setGotSecondSubjectCarousel(true);
+			console.log(secondSubjectCarousel);
+		}
+	}, [secondSubjectCarousel]);
+
 	return (
 		<section id="news-section">
 			<div id="first-carousel">
@@ -75,13 +80,15 @@ function News(props)
 								<p> Source : {article.source.name}</p>
 							</div>
 						</div>
-						<img src={article.urlToImage} width="53%" height="57%"/>
+						<img src={article.urlToImage} width="53%" height="57%" laoding="lazy"/>
 					</div>
 				)
 			})}
 			</AliceCarousel> : <h1>Loading</h1>}</div>
-			<hr></hr>
-			<div className="test-news-example" style={{marginBottom: "70px", fontFamily:"'Montserrat', sans-serif"}}>
+
+			<hr style={{marginLeft: "10px", marginRight: "10px"}}></hr>
+
+			<div style={{marginBottom: "70px", marginTop: "70px", fontFamily:"'Montserrat', sans-serif"}}>
 				<h3 style={{marginLeft: "15px"}}>Blockchain</h3>
 				{gotFirstSubjCarousel ? 
 				<AliceCarousel responsive={{ 0: {items : "3"}}} disableDotsControls="true" autoPlay="true" animationDuration="1000"
@@ -91,7 +98,7 @@ function News(props)
 							window.open(article.url, "_blank")
 						}} style={{marginRight: "15px", marginLeft: "15px"}}>
 							<div id="first-subject-image-wrapper" height="250px">
-								<img src={article.urlToImage} className="first-subject-images"/>
+								<img src={article.urlToImage} className="first-subject-images" loading="lazy"/>
 							</div>
 							<h2>{article.title}</h2>
 							<p>{article.description}</p>
@@ -99,6 +106,31 @@ function News(props)
 							</div>
 					})}
 				</AliceCarousel> : <h1>Loading</h1>}
+			</div>
+
+					{/* Second carousel */}
+			<div style={{marginBottom: "70px", marginTop: "70px", fontFamily:"'Montserrat', sans-serif"}}>
+				<h3 style={{marginLeft: "15px"}}>Web3</h3>
+				{gotFirstSubjCarousel ? 
+				<AliceCarousel responsive={{ 0: {items : "3"}}} disableDotsControls="true" autoPlay="true" animationDuration="1000"
+				autoPlayInterval="6000" infinite="true" style={{paddingLeft: "30px"}} autoPlayDirection="rtl">
+					{secondSubjectCarousel.filter(article => article.author != "msmash").map((article, index) => {
+						return <div id="first-subject-news" onClick={(e) => {
+							window.open(article.url, "_blank")
+						}} style={{marginRight: "15px", marginLeft: "15px"}}>
+							<div id="first-subject-image-wrapper" height="250px">
+								<img src={article.urlToImage} className="first-subject-images" loading="lazy"/>
+							</div>
+							<h2>{article.title}</h2>
+							<p>{article.description}</p>
+							<p className="news-author-auto">{article.author}</p>
+							</div>
+					})}
+				</AliceCarousel> : <h1>Loading</h1>}
+			</div>
+
+			<div id="all-news">
+
 			</div>
 		</section>
 	);
