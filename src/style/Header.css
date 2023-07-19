@@ -75,6 +75,11 @@ header > ul > li:after
 	background-color: white;
 }
 
+header > ul > li:active a
+{
+	opacity: 0.7;
+}
+
 header > ul > li:hover::after
 {
 	width: 100%;

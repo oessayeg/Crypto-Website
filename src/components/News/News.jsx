@@ -25,7 +25,7 @@ function News(props)
 	useEffect(() => {
 		setBitcoinNews(bitcoin.articles.filter(article => (article.author && article.urlToImage)).slice(5));
 		setLandingCarousel(bitcoin.articles.filter(article => (article.author && article.urlToImage)).slice(0, 5));
-		setWeb3News(web3.articles.filter(article => (article.author && article.urlToImage)).slice(12));
+		setWeb3News(web3.articles.filter(article => (article.author && article.urlToImage)).slice(30));
 		setBlockchainNews(blockchain.articles.filter(article => (article.author && article.urlToImage)).slice(8));
 		setFirstSubjCarousel(blockchain.articles.filter(article => (article.author && article.urlToImage)).slice(0, 8));
 		setSecondObjectCarousel(web3.articles.filter(article => (article.author && article.urlToImage)).slice(5, 12));
@@ -43,7 +43,10 @@ function News(props)
 
 	useEffect(() => {
 		if (web3News)
+		{
 			setGotWeb3News(true);
+			console.log(web3News);
+		}
 	}, [web3News]);
 
 	useEffect(() => {
@@ -58,15 +61,12 @@ function News(props)
 
 	useEffect(() => {
 		if (secondSubjectCarousel)
-		{
 			setGotSecondSubjectCarousel(true);
-			console.log(secondSubjectCarousel);
-		}
 	}, [secondSubjectCarousel]);
 
 	return (
 		<section id="news-section">
-			<div id="first-carousel">
+			{/* <div id="first-carousel">
 			{gotBitcoinNews ? <AliceCarousel style={{marginTop: "80px", marginBottom: "50px"}} autoPlay="true" animationDuration="500"  animationType="fadeout" autoPlayInterval="5000" infinite="true" 
 			disableDotsControls="true" disableButtonsControls="true">
 				{landingCarousel.map(article => {
@@ -84,9 +84,32 @@ function News(props)
 					</div>
 				)
 			})}
-			</AliceCarousel> : <h1>Loading</h1>}</div>
-
-			<hr style={{marginLeft: "10px", marginRight: "10px"}}></hr>
+			</AliceCarousel> : <h1>Loading</h1>}</div> */}
+			{gotBitcoinNews ? 
+			<div id="landing-news">
+				<div className="big-news" onClick={(e) => window.open(landingCarousel[0].url, "_blank")}>
+					<img style={{width: "100%", height: "450px"}} src={landingCarousel[0].urlToImage}/>
+					<div style={{position: "absolute", bottom : "0"}}>
+						<h1 style={{color:"#ffbf00", paddingLeft: "20px", paddingRight: "20px", fontSize: "35px", marginBottom: "0"}}>{landingCarousel[0].title}</h1>
+						<p style={{color:"white", paddingLeft: "20px", paddingRight: "20px", fontSize: "25px", marginTop: "5px"}}>{landingCarousel[0].description}</p>
+					</div>
+				</div>
+				<div id="landing-news-two">
+					<div style={{height: "225px", position: "relative"}} onClick={(e) => window.open(landingCarousel[1].url, "_blank")}>
+						<img style={{width: "100%", height : "100%"}} src={landingCarousel[1].urlToImage}/>
+						<div>
+							<h1>{landingCarousel[1].title}</h1>
+						</div>
+					</div>
+					<div style={{height: "225px", position: "relative"}} onClick={(e) => window.open(landingCarousel[2].url, "_blank")}>
+						<img style={{width: "100%", height: "100%"}} src={landingCarousel[2].urlToImage}/>
+						<div>
+							<h1>{landingCarousel[2].title}</h1>
+						</div>
+					</div>
+				</div>
+			</div> : <h1>Loading</h1>}
+			{/* <hr style={{marginLeft: "10px", marginRight: "10px"}}></hr> */}
 
 			<div style={{marginBottom: "70px", marginTop: "70px", fontFamily:"'Montserrat', sans-serif"}}>
 				<h3 style={{marginLeft: "15px"}}>Blockchain</h3>
@@ -132,14 +155,15 @@ function News(props)
 				{gotBitcoinNews ? 
 				<>
 					<div id="news-part">
-						{bitcoinNews.filter(article => (article.author != "Deanna Ritchie" && article.author != "George Glover")).slice(0, 13).map(article => {
+						{bitcoinNews.filter(article => (article.author != "Deanna Ritchie" && article.author != "George Glover" && article.author != "msmash")).slice(0, 13).map(article => {
 							return (
-								<div id="all-news-section">
-									<img src={article.urlToImage} width="150px" height="150px" loading="lazy"/>
+								<div id="all-news-section" onClick={(e) => window.open(article.url, "_blank")}>
+									<img src={article.urlToImage} width="170px" loading="lazy"/>
 									<div>
 										<h3>{article.title}</h3>
 										<p>{article.description.substring(0, 130)}</p>
 									</div>
+									<p  style={{fontStyle: "italic"}}>{article.author}</p>
 								</div>
 							);
 						})}
@@ -147,12 +171,13 @@ function News(props)
 					<div id="news-part">
 					{web3News.slice(0, 13).map(article => {
 						return (
-							<div id="all-news-section">
-								<img src={article.urlToImage} width="150px" height="150px" loading="lazy"/>
+							<div id="all-news-section" onClick={(e) => window.open(article.url, "_blank")}>
+								<img src={article.urlToImage} width="170px" loading="lazy"/>
 								<div>
 									<h3>{article.title}</h3>
 									<p>{article.description.substring(0, 130)}</p>
 								</div>
+								<p  style={{fontStyle: "italic"}}>{article.author.length > 60 ? "" : (article.author)}</p>
 							</div>
 						);
 					})}
@@ -160,6 +185,7 @@ function News(props)
 					</> : <h1>Loading</h1>
 				}
 			</div>
+			
 		</section>
 	);
 }
