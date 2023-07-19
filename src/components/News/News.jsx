@@ -61,7 +61,8 @@ function News(props)
 
 	return (
 		<section id="news-section">
-			{gotBitcoinNews ? <AliceCarousel  autoPlay="true" animationDuration="500"  animationType="fadeout" autoPlayInterval="5000" infinite="true" 
+			<div id="first-carousel">
+			{gotBitcoinNews ? <AliceCarousel style={{marginTop: "80px", marginBottom: "50px"}} autoPlay="true" animationDuration="500"  animationType="fadeout" autoPlayInterval="5000" infinite="true" 
 			disableDotsControls="true" disableButtonsControls="true">
 				{landingCarousel.map(article => {
 				return (
@@ -74,22 +75,27 @@ function News(props)
 								<p> Source : {article.source.name}</p>
 							</div>
 						</div>
-						<img src={article.urlToImage} width="51%" height="55%"/>
+						<img src={article.urlToImage} width="53%" height="57%"/>
 					</div>
 				)
 			})}
-			</AliceCarousel> : <h1>Loading</h1>}
+			</AliceCarousel> : <h1>Loading</h1>}</div>
 			<hr></hr>
-			<div>
-				<h3>Blockchain</h3>
+			<div className="test-news-example" style={{marginBottom: "70px", fontFamily:"'Montserrat', sans-serif"}}>
+				<h3 style={{marginLeft: "15px"}}>Blockchain</h3>
 				{gotFirstSubjCarousel ? 
-				<AliceCarousel responsive={{ 0: {items : "3"}}} disableDotsControls="true" autoPlay="true" animationDuration="1000" autoPlayInterval="6000" infinite="true">
-					{firstSubjCarousel.filter(article => article.author != "msmash").map(article => {
-						return <div id="first-subject-news">
+				<AliceCarousel responsive={{ 0: {items : "3"}}} disableDotsControls="true" autoPlay="true" animationDuration="1000"
+				autoPlayInterval="6000" infinite="true" style={{paddingLeft: "30px"}}>
+					{firstSubjCarousel.filter(article => article.author != "msmash").map((article, index) => {
+						return <div id="first-subject-news" onClick={(e) => {
+							window.open(article.url, "_blank")
+						}} style={{marginRight: "15px", marginLeft: "15px"}}>
 							<div id="first-subject-image-wrapper" height="250px">
 								<img src={article.urlToImage} className="first-subject-images"/>
 							</div>
-								<h2>{article.title}</h2>
+							<h2>{article.title}</h2>
+							<p>{article.description}</p>
+							<p className="news-author-auto">{article.author}</p>
 							</div>
 					})}
 				</AliceCarousel> : <h1>Loading</h1>}

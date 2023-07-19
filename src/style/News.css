@@ -1,7 +1,7 @@
-.alice-carousel
+#first-carousel
 {
 	margin-top: 80px;
-	margin-bottom: 50px;
+	margin-bottom: 80px;
 }
 
 #carousel-image-block
@@ -51,8 +51,11 @@
 
 #first-subject-news
 {
-	padding-left: 10px;	
-	padding-right: 10px;	
+	position: relative;
+	height: 550px;
+	background-color: white;
+	transition: box-shadow 0.5s ease;
+	margin-bottom: 10px;
 }
 
 #first-subject-image-wrapper
@@ -64,4 +67,54 @@
 .alice-carousel__stage
 {
 	align-items: center;
+}
+
+#first-subject-news > p
+{
+	font-size: 17px;
+	margin: 0;
+	padding: 15px;
+}
+
+#first-subject-news > h2
+{
+	padding: 11px;
+	margin: 0;
+}
+
+.news-author-auto
+{
+	position: absolute;
+	bottom: 0;
+	right: 0;
+}
+
+#first-subject-news:hover
+{
+	text-decoration: underline;
+	cursor: pointer;
+	box-shadow: 1px 1px 5px #333;
+}
+
+.alice-carousel__prev-btn
+{
+	position: absolute;
+	top: 45%;
+	left: -45px;
+	border-radius: 50%;
+	font-size: 30px;
+}
+
+.alice-carousel__next-btn
+{
+	position: absolute;
+	top: 45%;
+	right: -45px;
+	border-radius: 50%;
+	font-size: 30px;
+}
+
+.alice-carousel__prev-btn, .alice-carousel__next-btn
+{
+	width: auto;
 }
