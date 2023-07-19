@@ -25,10 +25,10 @@ function News(props)
 	useEffect(() => {
 		setBitcoinNews(bitcoin.articles.filter(article => (article.author && article.urlToImage)).slice(5));
 		setLandingCarousel(bitcoin.articles.filter(article => (article.author && article.urlToImage)).slice(0, 5));
-		setWeb3News(web3.articles.filter(article => (article.author && article.urlToImage)).slice(7));
+		setWeb3News(web3.articles.filter(article => (article.author && article.urlToImage)).slice(12));
 		setBlockchainNews(blockchain.articles.filter(article => (article.author && article.urlToImage)).slice(8));
 		setFirstSubjCarousel(blockchain.articles.filter(article => (article.author && article.urlToImage)).slice(0, 8));
-		setSecondObjectCarousel(web3.articles.filter(article => (article.author && article.urlToImage)).slice(10, 18));
+		setSecondObjectCarousel(web3.articles.filter(article => (article.author && article.urlToImage)).slice(5, 12));
 	}, []);
 
 	useEffect(() => {
@@ -113,7 +113,7 @@ function News(props)
 				<h3 style={{marginLeft: "15px"}}>Web3</h3>
 				{gotFirstSubjCarousel ? 
 				<AliceCarousel responsive={{ 0: {items : "3"}}} disableDotsControls="true" autoPlay="true" animationDuration="1000"
-				autoPlayInterval="6000" infinite="true" style={{paddingLeft: "30px"}} autoPlayDirection="rtl">
+				autoPlayInterval="5000" infinite="true" style={{paddingLeft: "30px"}} autoPlayDirection="rtl">
 					{secondSubjectCarousel.filter(article => article.author != "msmash").map((article, index) => {
 						return <div id="first-subject-news" onClick={(e) => {
 							window.open(article.url, "_blank")
@@ -128,9 +128,37 @@ function News(props)
 					})}
 				</AliceCarousel> : <h1>Loading</h1>}
 			</div>
-
 			<div id="all-news">
-
+				{gotBitcoinNews ? 
+				<>
+					<div id="news-part">
+						{bitcoinNews.filter(article => (article.author != "Deanna Ritchie" && article.author != "George Glover")).slice(0, 13).map(article => {
+							return (
+								<div id="all-news-section">
+									<img src={article.urlToImage} width="150px" height="150px" loading="lazy"/>
+									<div>
+										<h3>{article.title}</h3>
+										<p>{article.description.substring(0, 130)}</p>
+									</div>
+								</div>
+							);
+						})}
+					</div>
+					<div id="news-part">
+					{web3News.slice(0, 13).map(article => {
+						return (
+							<div id="all-news-section">
+								<img src={article.urlToImage} width="150px" height="150px" loading="lazy"/>
+								<div>
+									<h3>{article.title}</h3>
+									<p>{article.description.substring(0, 130)}</p>
+								</div>
+							</div>
+						);
+					})}
+					</div>
+					</> : <h1>Loading</h1>
+				}
 			</div>
 		</section>
 	);
