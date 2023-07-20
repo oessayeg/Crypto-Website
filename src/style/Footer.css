@@ -45,11 +45,6 @@ footer
 	transform: scale(1.15);
 }
 
-#footer-last-part
-{
-	margin-top: -20px;
-}
-
 #footer-last-part > p
 {
 	color: white;

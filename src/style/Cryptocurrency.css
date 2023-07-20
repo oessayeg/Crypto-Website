@@ -5,9 +5,17 @@
 	
 }
 
+#trending-coins-carousel
+{
+	margin-bottom: 50px;
+}
+
 #trending-coins-block
 {
-	text-align: center;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
 	font-family: 'Montserrat', sans-serif;
 }
 
@@ -30,4 +38,37 @@
 #crypto-page-header > p
 {
 	margin-top: 10px;
+}
+
+#trending-coins-block > div > div
+{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 7px;
+}
+
+#trending-coins-block > div > div  *
+{
+	margin-bottom: 7px;
+	margin-top: 10px;
+}
+
+#trending-coins-block > div > h4
+{
+	text-align: center;
+	margin: 0;
+}
+
+#coin-icon-block
+{
+	display: flex;
+	align-items: center;
+	gap: 20px;
+}
+
+#all-coins-data
+{
+	padding-left: 24px;
+	padding-right: 24px;
 }

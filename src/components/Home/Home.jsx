@@ -150,7 +150,7 @@ function Home(props) {
 										<TableCell align="right" style={{padding: "8px", fontFamily: "'Montserrat', sans-serif"}}><span style={{color : coin.price_change_percentage_1h_in_currency > 0 ? "#139c23" : "#f71414"}}>{coin.price_change_percentage_1h_in_currency.toFixed(2)}%</span></TableCell>
 										<TableCell align="right" style={{padding: "8px", fontFamily: "'Montserrat', sans-serif"}}><span style={{color : coin.price_change_percentage_7d_in_currency > 0 ? "#139c23" : "#f71414"}}>{coin.price_change_percentage_7d_in_currency.toFixed(2)}%</span></TableCell>
 										<TableCell align="right" style={{padding: "8px", fontFamily: "'Montserrat', sans-serif"}}><span style={{color : coin.price_change_percentage_30d_in_currency > 0 ? "#139c23" : "#f71414"}}>{coin.price_change_percentage_30d_in_currency.toFixed(2)}%</span></TableCell>
-										<TableCell align="right" style={{padding: "8px", fontFamily: "'Montserrat', sans-serif"}}>{coin.total_volume.toLocaleString().replaceAll(/\s/g, ",")}</TableCell>
+										<TableCell align="right" style={{padding: "8px", fontFamily: "'Montserrat', sans-serif"}}>${coin.total_volume.toLocaleString().replaceAll(/\s/g, ",")}</TableCell>
 										<TableCell align="right" style={{padding: "8px", fontFamily: "'Montserrat', sans-serif"}}>${Math.ceil(coin.current_price * coin.circulating_supply).toLocaleString().replaceAll(/\s/g, ',')}</TableCell>
 										<TableCell align="right" style={{paddingRight: "0", paddingTop: "8px", paddingBottom: "8px", paddingLeft: "8px"}}>
 											<div style={{display: "flex", justifyContent: "center"}}>
