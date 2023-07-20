@@ -66,52 +66,26 @@ function News(props)
 
 	return (
 		<section id="news-section">
-			{/* <div id="first-carousel">
-			{gotBitcoinNews ? <AliceCarousel style={{marginTop: "80px", marginBottom: "50px"}} autoPlay="true" animationDuration="500"  animationType="fadeout" autoPlayInterval="5000" infinite="true" 
-			disableDotsControls="true" disableButtonsControls="true">
-				{landingCarousel.map(article => {
-				return (
-					<div id="carousel-image-block">
-						<div id="carousel-infos">
-							<h1>{article.title}</h1>
-							<p className="carousel-news-description">{article.description}</p>
-							<div id="carousel-side-infos">
-								<p>Author : {article.author}</p>
-								<p> Source : {article.source.name}</p>
-							</div>
-						</div>
-						<img src={article.urlToImage} width="53%" height="57%" laoding="lazy"/>
-					</div>
-				)
-			})}
-			</AliceCarousel> : <h1>Loading</h1>}</div> */}
 			{gotBitcoinNews ? 
-			<div id="landing-news">
-				<div className="big-news" onClick={(e) => window.open(landingCarousel[0].url, "_blank")}>
-					<img style={{width: "100%", height: "450px"}} src={landingCarousel[0].urlToImage}/>
-					<div style={{position: "absolute", bottom : "0"}}>
-						<h1 style={{color:"#ffbf00", paddingLeft: "20px", paddingRight: "20px", fontSize: "35px", marginBottom: "0"}}>{landingCarousel[0].title}</h1>
-						<p style={{color:"white", paddingLeft: "20px", paddingRight: "20px", fontSize: "25px", marginTop: "5px"}}>{landingCarousel[0].description}</p>
-					</div>
-				</div>
-				<div id="landing-news-two">
-					<div style={{height: "225px", position: "relative"}} onClick={(e) => window.open(landingCarousel[1].url, "_blank")}>
-						<img style={{width: "100%", height : "100%"}} src={landingCarousel[1].urlToImage}/>
-						<div>
-							<h1>{landingCarousel[1].title}</h1>
-						</div>
-					</div>
-					<div style={{height: "225px", position: "relative"}} onClick={(e) => window.open(landingCarousel[2].url, "_blank")}>
-						<img style={{width: "100%", height: "100%"}} src={landingCarousel[2].urlToImage}/>
-						<div>
-							<h1>{landingCarousel[2].title}</h1>
-						</div>
-					</div>
-				</div>
-			</div> : <h1>Loading</h1>}
-			{/* <hr style={{marginLeft: "10px", marginRight: "10px"}}></hr> */}
+			<AliceCarousel autoPlay="true" animationType="fadeout" disableButtonsControls="true" animationDuration="600"
+			infinite="true" autoPlayInterval="5000">
+				{landingCarousel.filter(article => article.author != "Filip De Mott").map(article => {
+					return (
+						<div id="landing-news">
+							<div className="big-news" style={{height: "500px"}} onClick={(e) => window.open(article.url, "_blank")}>
+								<img style={{width: "100%", height: "100%"}} src={article.urlToImage}/>
+								<div style={{position: "absolute", bottom : "20px"}}>
+									<h1 style={{color:"#ffbf00", paddingLeft: "20px", paddingRight: "20%", fontSize: "35px", marginBottom: "0"}}>{article.title} {article.author}</h1>
+									<p style={{color:"white", paddingLeft: "20px", paddingRight: "20%", fontSize: "25px", marginTop: "5px"}}>{article.description}</p>
+								</div>
+								<p>Author: {article.author}</p>
+							</div>
+						</div> 
+					);
+				})}
+			</AliceCarousel> : <h1>Loading</h1>}
 
-			<div style={{marginBottom: "70px", marginTop: "70px", fontFamily:"'Montserrat', sans-serif"}}>
+			<div style={{marginBottom: "70px", fontFamily:"'Montserrat', sans-serif"}}>
 				<h3 style={{marginLeft: "15px"}}>Blockchain</h3>
 				{gotFirstSubjCarousel ? 
 				<AliceCarousel responsive={{ 0: {items : "3"}}} disableDotsControls="true" autoPlay="true" animationDuration="1000"
