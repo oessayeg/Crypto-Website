@@ -1,0 +1,33 @@
+#crypto-market-block
+{
+	margin-left: 40px;
+	margin-right: 40px;
+	
+}
+
+#trending-coins-block
+{
+	text-align: center;
+	font-family: 'Montserrat', sans-serif;
+}
+
+#crypto-page-header
+{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	margin-bottom: 40px;
+	margin-top: 20px;
+	font-family: 'Montserrat', sans-serif;
+}
+
+#crypto-page-header > h1
+{
+	margin-bottom: 0;
+}
+
+#crypto-page-header > p
+{
+	margin-top: 10px;
+}

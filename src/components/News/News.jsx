@@ -43,10 +43,7 @@ function News(props)
 
 	useEffect(() => {
 		if (web3News)
-		{
 			setGotWeb3News(true);
-			console.log(web3News);
-		}
 	}, [web3News]);
 
 	useEffect(() => {
@@ -67,16 +64,16 @@ function News(props)
 	return (
 		<section id="news-section">
 			{gotBitcoinNews ? 
-			<AliceCarousel autoPlay="true" animationType="fadeout" disableButtonsControls="true" animationDuration="600"
-			infinite="true" autoPlayInterval="5000">
+			<AliceCarousel autoPlay="true" animationType="fadeout" disableButtonsControls animationDuration={600}
+			infinite="true" autoPlayInterval={5000}>
 				{landingCarousel.filter(article => article.author != "Filip De Mott").map(article => {
 					return (
 						<div id="landing-news">
-							<div className="big-news" style={{height: "500px"}} onClick={(e) => window.open(article.url, "_blank")}>
+							<div style={{height: "500px", flexGrow: "1"}} onClick={(e) => window.open(article.url, "_blank")}>
 								<img style={{width: "100%", height: "100%"}} src={article.urlToImage}/>
 								<div style={{position: "absolute", bottom : "20px"}}>
-									<h1 style={{color:"#ffbf00", paddingLeft: "20px", paddingRight: "20%", fontSize: "35px", marginBottom: "0"}}>{article.title} {article.author}</h1>
-									<p style={{color:"white", paddingLeft: "20px", paddingRight: "20%", fontSize: "25px", marginTop: "5px"}}>{article.description}</p>
+									<h1 style={{color:"#ffbf00", paddingLeft: "20px", paddingRight: "10%", fontSize: "35px", marginBottom: "0"}}>{article.title}</h1>
+									<p style={{color:"white", paddingLeft: "20px", paddingRight: "10%", fontSize: "25px", marginTop: "5px"}}>{article.description}</p>
 								</div>
 								<p>Author: {article.author}</p>
 							</div>
@@ -88,8 +85,8 @@ function News(props)
 			<div style={{marginBottom: "70px", fontFamily:"'Montserrat', sans-serif"}}>
 				<h3 style={{marginLeft: "15px"}}>Blockchain</h3>
 				{gotFirstSubjCarousel ? 
-				<AliceCarousel responsive={{ 0: {items : "3"}}} disableDotsControls="true" autoPlay="true" animationDuration="1000"
-				autoPlayInterval="6000" infinite="true" style={{paddingLeft: "30px"}}>
+				<AliceCarousel responsive={{ 0: {items : "3"}}} disableDotsControls="true" autoPlay="true" animationDuration={1000}
+				autoPlayInterval={6000} infinite="true" style={{paddingLeft: "30px"}}>
 					{firstSubjCarousel.filter(article => article.author != "msmash").map((article, index) => {
 						return <div id="first-subject-news" onClick={(e) => {
 							window.open(article.url, "_blank")
@@ -109,8 +106,8 @@ function News(props)
 			<div style={{marginBottom: "70px", marginTop: "70px", fontFamily:"'Montserrat', sans-serif"}}>
 				<h3 style={{marginLeft: "15px"}}>Web3</h3>
 				{gotFirstSubjCarousel ? 
-				<AliceCarousel responsive={{ 0: {items : "3"}}} disableDotsControls="true" autoPlay="true" animationDuration="1000"
-				autoPlayInterval="5000" infinite="true" style={{paddingLeft: "30px"}} autoPlayDirection="rtl">
+				<AliceCarousel responsive={{ 0: {items : "3"}}} disableDotsControls="true" autoPlay="true" animationDuration={1000}
+				autoPlayInterval={5000} infinite="true" style={{paddingLeft: "30px"}} autoPlayDirection="rtl">
 					{secondSubjectCarousel.filter(article => article.author != "msmash").map((article, index) => {
 						return <div id="first-subject-news" onClick={(e) => {
 							window.open(article.url, "_blank")

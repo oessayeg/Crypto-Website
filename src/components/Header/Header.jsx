@@ -22,10 +22,10 @@ function Header() {
 					<Link to="/">Home</Link>
 				</li>
 				<li>
-					<Link to="/news">News</Link>
+					<Link to="/cryptocurrencies">Market</Link>
 				</li>
 				<li>
-					<Link to="/cryptocurrencies">Market</Link>
+					<Link to="/news">News</Link>
 				</li>
 				<li className="last-li" onMouseMove={(e) => setIsHovered(true)} onMouseLeave={(e) => setIsHovered(false)}>
 					<img src={!isHovered ? nightModeWhite : nightModeBlack} width="23px"/>
