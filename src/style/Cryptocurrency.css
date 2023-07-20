@@ -71,4 +71,18 @@
 {
 	padding-left: 24px;
 	padding-right: 24px;
+	margin-bottom: 30px;
+}
+
+#pagination
+{
+	display: flex;
+	justify-content: center;
+	margin-bottom: 50px;
+}
+
+.MuiTouchRipple-root.css-8je8zh-MuiTouchRipple-root
+{
+	/* background-color: red; */
+	/* color: #ffbf00; */
 }
