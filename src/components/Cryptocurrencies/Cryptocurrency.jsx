@@ -34,9 +34,11 @@ const options = {
 
 
 function Cryptocurrency(props) {
+
 	const [randomCoins, setRandomCoins] = useState(null);
 	const [gotRandomCoins, setGotRandomCoins] = useState(false);
 	const [page, setPage] = useState(1);
+	const [searchPattern, setSearchPattern] = useState("");
 
 	useEffect(() => {
 		setRandomCoins(coins.slice(0, 8));
@@ -87,7 +89,10 @@ function Cryptocurrency(props) {
 				: <h1>Loading</h1>}
 			</div>
 			<div id="input-box">
-				<input type="text" required spellCheck="false"/>
+				<input type="text" required spellCheck="false" onChange={(e) => {
+					setSearchPattern(e.target.value);
+					setPage(1);
+					}}/>
 				<span>Search for a cryptocurrency</span>
 			</div>
 			<div id="all-coins-data">
@@ -106,7 +111,7 @@ function Cryptocurrency(props) {
 						</TableRow>
 					</TableHead>
 					<TableBody>
-							{coins.slice((page - 1) * 13, (page - 1) * 13 + 13).map((coin) => (
+							{coins.filter(coin => coin.name.toLowerCase().includes(searchPattern.toLowerCase())).slice((page - 1) * 13, (page - 1) * 13 + 13).map((coin) => (
 								<TableRow key={coin.name} sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
 									<TableCell>
 										<div id="coin-icon-block">
@@ -149,7 +154,7 @@ function Cryptocurrency(props) {
 			</div>
 			<div id="pagination">
 				<Stack spacing={2}>
-					<Pagination count={10} onChange={(e, value) => setPage(value)}/>
+					<Pagination count={(coins.filter(coin => coin.name.toLowerCase().includes(searchPattern.toLowerCase())).length / 13).toFixed(0)} onChange={(e, value) => {setPage(value)}}/>
 				</Stack>
 			</div>
 		</div>
