@@ -25,23 +25,29 @@ import whiteArrowRight from "./whiteArrowRight.png"
 // gold : #FFD700, #ffbf00
 // green : #2ECC40
 
+// black mode
+// background : #1a1a1a
+// text : #f5f5f5 
+// main.. : #222222
+// gold : #ffa500, #ffbf00
+
 const options = {
 	responsive: true,
 	maintainAspectRatio: false,
 	scales: {
 	  x: {
-		display: false, // Remove the x-axis
+		display: false, 
 	  },
 	  y: {
-		display: false, // Remove the y-axis
+		display: false, 
 	  },
 	},
 	plugins: {
 	  legend: {
-		display: false, // Remove the legend
+		display: false, 
 	  },
 	  tooltip: {
-		enabled: false, // Disable tooltips
+		enabled: false,
 	  },
 	},
   };
@@ -73,11 +79,19 @@ function Home(props) {
 		}
 	}, [allNews])
 
+	const mainStyles = {
+		paddingLeft: "40px",
+		paddingRight: "40px",
+		paddingBottom: "70px",
+		backgroundColor: props.darkMode ? "#1A1A1A" : "#F5F5F5",
+		transition : "background-color 1s ease"
+	};
+
 	return (
-		<main>
+		<main style={mainStyles}>
 			<div id="hero">
 				<div id="hero-text">
-					<h2>Read cryptocurrency news and track market data,&nbsp; <span className="easy-word">easily.</span></h2>
+					<h2 >Read cryptocurrency news and track market data,&nbsp; <span className="easy-word">easily.</span></h2>
 					<p>Stay updated, seize opportunities, and conquer the crypto world !</p>
 					<div id="call-to-action-buttons">
 						<Link to="/news">News</Link>
@@ -88,8 +102,8 @@ function Home(props) {
 			</div>
 			<hr></hr>
 			<div id="call-to-use">
-				<h4>Why choose Crypto Website ?</h4>
-				<h2>Unlock the power of crypto with real-time market data and breaking news !</h2>
+				<h4 style={!props.darkMode ? {color: "#333333"} : {color : "#f5f5f5 "}}>Why choose Crypto Website ?</h4>
+				<h2 style={!props.darkMode ? {color: "#333333"} : {color : "#f5f5f5 "}}>Unlock the power of crypto with real-time market data and breaking news !</h2>
 				<div id="why-points">
 					<div className="first-point">
 						<img src={news} width="64px"/>

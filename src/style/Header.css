@@ -1,5 +1,6 @@
 header 
 {
+	position: relative;
 	font-family: 'Montserrat', sans-serif;
 	display: grid;
 	grid-template-columns: 1fr 1fr;
@@ -8,9 +9,9 @@ header
 	padding-right: 40px;
 	justify-content: center;
 	align-items: center;
-	border-bottom: 1px solid white;
 	background-color: white;
 	box-shadow: 0px 1px 5px rgb(104, 104, 104);
+	transition: background-color 1s;
 }
 
 header > ul > li

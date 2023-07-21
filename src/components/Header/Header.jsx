@@ -7,12 +7,12 @@ import nightModeWhite from "./images/nightMode.png"
 import nightModeBlack from "./images/nightModeBlack.png"
 import ethereum from "./images/binanceIcon.png"
 
-function Header() {
+function Header(props) {
 	// The header will have its own color and the background a little bit similar	
 	const [isHovered, setIsHovered] = useState(false);
 
 	return (
-		<header>
+		<header style={props.darkMode ? {backgroundColor: "#333333", boxShadow:" 0px 1px 5px white"} : {backgroundColor: "#F5F5F5"}}>
 			<div>
 				<img src={ethereum} width="50px"></img>
 				<Link to="/">Crypto Website</Link>
@@ -27,7 +27,7 @@ function Header() {
 				<li>
 					<Link to="/news">News</Link>
 				</li>
-				<li className="last-li" onMouseMove={(e) => setIsHovered(true)} onMouseLeave={(e) => setIsHovered(false)}>
+				<li onClick={(e) => props.setDarkMode(!props.darkMode)} className="last-li" onMouseMove={(e) => setIsHovered(true)} onMouseLeave={(e) => setIsHovered(false)}>
 					<img src={!isHovered ? nightModeWhite : nightModeBlack} width="23px"/>
 				</li>
 			</ul>

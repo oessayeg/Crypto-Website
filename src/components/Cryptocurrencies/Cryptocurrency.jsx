@@ -88,6 +88,7 @@ function Cryptocurrency(props) {
 				</AliceCarousel>
 				: <h1>Loading</h1>}
 			</div>
+			<h2 style={{marginLeft: "24px", marginRight: "24px", fontFamily: "'Montserrat', sans-serif", textAlign: "center"}}>Cryptocurrencies data by market cap</h2>
 			<div id="input-box">
 				<input type="text" required spellCheck="false" onChange={(e) => {
 					setSearchPattern(e.target.value);
