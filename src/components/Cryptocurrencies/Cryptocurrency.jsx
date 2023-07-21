@@ -86,6 +86,10 @@ function Cryptocurrency(props) {
 				</AliceCarousel>
 				: <h1>Loading</h1>}
 			</div>
+			<div id="input-box">
+				<input type="text" required spellCheck="false"/>
+				<span>Search for a cryptocurrency</span>
+			</div>
 			<div id="all-coins-data">
 			<TableContainer component={Paper}>
 				<Table sx={{ minWidth: 650 }} aria-label="Cryptocurrencies market infos">

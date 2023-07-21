@@ -81,8 +81,51 @@
 	margin-bottom: 50px;
 }
 
-.MuiTouchRipple-root.css-8je8zh-MuiTouchRipple-root
+#input-box
 {
-	/* background-color: red; */
-	/* color: #ffbf00; */
+	position: relative;
+	margin-left: 26px;
+	margin-right: 26px;
+	margin-bottom: 20px;
+}
+
+#input-box input
+{
+	background-color: #F5F5F5;
+	padding: 15px 14px;
+	font-size: 1em;
+	border-radius: 5px;
+	width: 100%;
+	outline: none;
+	box-sizing: border-box;
+	border: 1px solid rgb(145, 145, 145);
+	font-family: 'Montserrat', sans-serif;
+}
+
+#input-box input:hover,
+#input-box input:focus
+{
+	box-shadow: 0px 0px 0px 1px #333;
+}
+
+#input-box span
+{
+	position: absolute;
+	left: 0;
+	top: 2px;
+	padding: 14px;
+	pointer-events: none;
+	color: #333;
+	transition: all 0.2s;
+	font-family: 'Montserrat', sans-serif;
+}
+
+#input-box input:valid ~ span,
+#input-box input:focus ~ span
+{
+	color: #333;
+	transform: translateX(11px) translateY(-10px);
+	background-color: #F5F5F5;
+	padding: 0px 4px;
+	font-size: 12px;
 }
