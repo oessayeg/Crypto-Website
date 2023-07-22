@@ -42,8 +42,6 @@ header > ul
 	cursor: pointer;
 	margin-left: 45px;
 	padding: 7px;
-	border: 1px solid #333333;
-	background-color: #333333;
 	border-radius: 50%;
 	transition: border 0.5s ease;
 	transition: background-color 0.5s ease;
@@ -59,23 +57,6 @@ header > ul
 	opacity: 0.8;
 }
 
-header > ul > li:after
-{
-	content: "";
-	position: absolute;
-	width: 0%;
-	height: 2px;
-	display: block;
-	transition: all 0.4s ease;
-	bottom: -10%;
-}
-
-.last-li:hover
-{
-	border: 1px solid #333333;
-	background-color: white;
-}
-
 header > ul > li:active a
 {
 	opacity: 0.7;
@@ -85,9 +66,7 @@ header > ul > li:hover::after
 {
 	width: 100%;
 	height: 2px;
-	background-color: #333333;
 }
-
 
 header > ul > li > a
 {
