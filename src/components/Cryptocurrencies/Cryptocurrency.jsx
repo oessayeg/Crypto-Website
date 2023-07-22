@@ -8,8 +8,9 @@ import { Chart } from "chart.js/auto"
 import { Line } from "react-chartjs-2"
 import Paper from '@mui/material/Paper'
 import { Table, TableContainer, TableHead, TableRow, TableCell, TableBody, makeStyles } from "@mui/material"
-import Pagination from '@mui/material/Pagination';
+// import Pagination from '@mui/material/Pagination';
 import Stack from '@mui/material/Stack';
+import { Pagination } from "antd";
 
 const options = {
 	responsive: true,
@@ -39,6 +40,7 @@ function Cryptocurrency(props) {
 	const [gotRandomCoins, setGotRandomCoins] = useState(false);
 	const [page, setPage] = useState(1);
 	const [searchPattern, setSearchPattern] = useState("");
+	const [isFocused, setIsFocused] = useState(false);
 
 	useEffect(() => {
 		setRandomCoins(coins.slice(0, 8));
@@ -50,14 +52,18 @@ function Cryptocurrency(props) {
 	}, [randomCoins]);
 
 	function priceColor(price) {
-		return {fontFamily: "'Montserrat', sans-serif", color : price > 0 ? "#2ECC40" : "#f71414"};
+		return {fontFamily: "'Montserrat', sans-serif",
+		color : price > 0 ? "#2ECC40" : "#f71414",
+		backgroundColor: props.darkMode ? "#1a1a1a" : "",
+		transition : "background-color 1s ease",
+		borderColor: props.darkMode ? "grey" : ""}
 	}
 
 	return (
-		<div id="crypto-market-block">
+		<div id="crypto-market-block" style={{backgroundColor: props.darkMode ? "#1a1a1a" : "#f5f5f5"}}>
 			<div id="crypto-page-header">
-				<h1>Crypto Market Data</h1>
-				<p>Stay updated and track your favorite cryptocurrency</p>
+				<h1 style={{color: props.darkMode ? "#f5f5f5" : "#333333"}}>Crypto Market Data</h1>
+				<p style={{color: props.darkMode ? "#f5f5f5" : "#333333"}}>Stay updated and track your favorite cryptocurrency</p>
 			</div>
 			<div id="trending-coins-carousel">
 				{gotRandomCoins ? 
@@ -77,10 +83,10 @@ function Cryptocurrency(props) {
 							<img src={coin.image} width="110px" height="110px"/>	
 							<div>
 								<div>
-									<h3>{coin.symbol}</h3>
+									<h3 style={{color: props.darkMode ? "#f5f5f5" : "#333333"}}>{coin.symbol}</h3>
 									<p style={{color : coin.price_change_percentage_24h > 0 ? "#139c23" : "#f71414"}}>{coin.price_change_percentage_24h > 0 && "+"}{coin.price_change_percentage_24h.toFixed(3)}%</p>
 								</div>
-								<h4>$ {coin.current_price.toLocaleString().replaceAll(",", ".").replaceAll(/\s+/g, ",")}</h4>
+								<h4 style={{color: props.darkMode ? "#f5f5f5" : "#333333"}}>$ {coin.current_price.toLocaleString().replaceAll(",", ".").replaceAll(/\s+/g, ",")}</h4>
 							</div>
 						</div>
 					);
@@ -88,13 +94,13 @@ function Cryptocurrency(props) {
 				</AliceCarousel>
 				: <h1>Loading</h1>}
 			</div>
-			<h2 style={{marginLeft: "24px", marginRight: "24px", fontFamily: "'Montserrat', sans-serif", textAlign: "center"}}>Cryptocurrencies data by market cap</h2>
+			<h2 style={{marginLeft: "24px", marginRight: "24px", fontFamily: "'Montserrat', sans-serif", textAlign: "center", color: props.darkMode ? "#f5f5f5" : "#333333"}}>Cryptocurrencies data by market cap</h2>
 			<div id="input-box">
-				<input type="text" required spellCheck="false" onChange={(e) => {
+				<input type="text" style={{color: props.darkMode ? "#f5f5f5" : "#333333", backgroundColor: props.darkMode ? "#1a1a1a" : "#f5f5f5", transition: "background-color 1s ease"}} required spellCheck="false" onChange={(e) => {
 					setSearchPattern(e.target.value);
 					setPage(1);
-					}}/>
-				<span>Search for a cryptocurrency</span>
+					}} onFocus={(e) => setIsFocused(true)} onBlur={(e) => setIsFocused(false)}/>
+				<span style={{color: props.darkMode ? "#f5f5f5" : "#333333", backgroundColor: isFocused ? (props.darkMode ? "#1a1a1a" : "#f5f5f5") : ""}}>Search for a cryptocurrency</span>
 			</div>
 			<div id="all-coins-data">
 			<TableContainer component={Paper}>
@@ -111,25 +117,25 @@ function Cryptocurrency(props) {
 							<TableCell align="center"><strong>Last 7 days</strong></TableCell>
 						</TableRow>
 					</TableHead>
-					<TableBody>
+					<TableBody style={{borderBottom: "1px solid grey", borderBottomRightRadius: "0"}}>
 							{coins.filter(coin => coin.name.toLowerCase().includes(searchPattern.toLowerCase())).slice((page - 1) * 13, (page - 1) * 13 + 13).map((coin) => (
 								<TableRow key={coin.name} sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
-									<TableCell>
+									<TableCell style={{backgroundColor: props.darkMode ? "#1a1a1a" : "", transition : "background-color 1s ease", borderColor: props.darkMode ? "grey" : ""}}>
 										<div id="coin-icon-block">
 											<img src={coin.image} width="40px"/>
 											<div>
-												<p style={{fontFamily: "'Montserrat', sans-serif", margin: "0"}}>{coin.symbol.toUpperCase()}</p>
-												<p style={{fontFamily: "'Montserrat', sans-serif", margin: "0"}}>{coin.name}</p>
+												<p style={{fontFamily: "'Montserrat', sans-serif", margin: "0", color: props.darkMode ? "#F5F5F5" : "#333333"}}>{coin.symbol.toUpperCase()}</p>
+												<p style={{fontFamily: "'Montserrat', sans-serif", margin: "0", color: props.darkMode ? "#F5F5F5" : "#333333"}}>{coin.name}</p>
 											</div>
 										</div>
 									</TableCell>
-									<TableCell align="right"  style={{fontFamily: "'Montserrat', sans-serif"}}>${coin.current_price > 1 ? coin.current_price.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") : coin.current_price.toFixed(5)}</TableCell>
+									<TableCell align="right"  style={{fontFamily: "'Montserrat', sans-serif", color: props.darkMode ? "#F5F5F5" : "#333333", backgroundColor: props.darkMode ? "#1a1a1a" : "", transition : "background-color 1s ease", borderColor: props.darkMode ? "grey" : ""}}>${coin.current_price > 1 ? coin.current_price.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") : coin.current_price.toFixed(5)}</TableCell>
 									<TableCell align="right" style={priceColor(coin.price_change_percentage_1h_in_currency)}>{coin.price_change_percentage_1h_in_currency > 0 && "+"}{Number(coin.price_change_percentage_1h_in_currency).toFixed(2)}%</TableCell>
 									<TableCell align="right" style={priceColor(coin.price_change_percentage_7d_in_currency)}>{coin.price_change_percentage_7d_in_currency > 0 && "+"}{Number(coin.price_change_percentage_7d_in_currency).toFixed(2)}%</TableCell>
 									<TableCell align="right" style={priceColor(coin.price_change_percentage_30d_in_currency)}>{coin.price_change_percentage_30d_in_currency > 0 && "+"}{Number(coin.price_change_percentage_30d_in_currency).toFixed(2)}%</TableCell>
-									<TableCell align="right" style={{fontFamily: "'Montserrat', sans-serif"}}>${coin.total_volume.toLocaleString().replaceAll(",", ".").replaceAll(/\s+/g, ",")}</TableCell>
-									<TableCell align="right" style={{fontFamily: "'Montserrat', sans-serif"}}>${coin.market_cap.toLocaleString().replaceAll(",", ".").replaceAll(/\s+/g, ",")}</TableCell>
-									<TableCell align="right" style={{fontFamily: "'Montserrat', sans-serif"}}>
+									<TableCell align="right" style={{fontFamily: "'Montserrat', sans-serif", color: props.darkMode ? "#F5F5F5" : "#333333", backgroundColor: props.darkMode ? "#1a1a1a" : "", transition : "background-color 1s ease", borderColor: props.darkMode ? "grey" : ""}}>${coin.total_volume.toLocaleString().replaceAll(",", ".").replaceAll(/\s+/g, ",")}</TableCell>
+									<TableCell align="right" style={{fontFamily: "'Montserrat', sans-serif", color: props.darkMode ? "#F5F5F5" : "#333333", backgroundColor: props.darkMode ? "#1a1a1a" : "", transition : "background-color 1s ease", borderColor: props.darkMode ? "grey" : ""}}>${coin.market_cap.toLocaleString().replaceAll(",", ".").replaceAll(/\s+/g, ",")}</TableCell>
+									<TableCell align="right" style={{fontFamily: "'Montserrat', sans-serif", backgroundColor: props.darkMode ? "#1a1a1a" : "", transition : "background-color 1s ease", borderColor: props.darkMode ? "grey" : ""}}>
 									<div style={{display: "flex", justifyContent: "center"}}>
 											<div style={{width:"120px", height:"50px", display: "flex"}}>
 												<Line data={{
@@ -154,13 +160,16 @@ function Cryptocurrency(props) {
 		</TableContainer>
 			</div>
 			<div id="pagination">
-				<Stack spacing={2}>
+				{/* <Stack spacing={2}>
 					<Pagination count={(coins.filter(coin => coin.name.toLowerCase().includes(searchPattern.toLowerCase())).length / 13).toFixed(0)} onChange={(e, value) => {setPage(value)}}/>
-				</Stack>
+				</Stack> */}
+				<Pagination current={page} total={130} pageSize={13}
+				onChange={(e) => setPage(e)} showSizeChanger="false"
+				/>
+				
 			</div>
 		</div>
 	);
-
 }
 
 export default Cryptocurrency;

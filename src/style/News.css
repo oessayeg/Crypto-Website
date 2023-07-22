@@ -1,7 +1,8 @@
 #news-section
 {
-	margin-left: 60px;
-	margin-right: 60px;
+	padding-left: 60px;
+	padding-right: 60px;
+	background-color: #F5F5F5;
 }
 
 .first-subject-images
@@ -86,7 +87,7 @@
 {
 	display: grid;
 	grid-template-columns: 1fr 1fr;
-	margin-bottom: 110px;
+	padding-bottom: 110px;
 	gap: 40px;
 	margin-left: 20px;
 	margin-right: 20px;

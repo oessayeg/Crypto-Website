@@ -40,10 +40,6 @@ function Header(props) {
 		color : props.darkMode ? "#F5F5F5" : "#333333"
 	}
 
-	useEffect(() => {
-		console.log("hovered : " + isHovered);
-	}, [isHovered]);
-
 	return (
 		<header style={props.darkMode ? {backgroundColor: "#333333", boxShadow:" 0px 1px 5px black"} : {backgroundColor: "white"}}>
 			<div>

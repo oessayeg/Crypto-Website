@@ -10,10 +10,6 @@ import "./style/Global.css"
 function App() {
   const [darkMode, setDarkMode] = useState(false);
 
-  useEffect(() => {
-    console.log(darkMode);
-  }, [darkMode]);
-
   return (
     <>
     <Header darkMode={darkMode} setDarkMode={setDarkMode}/>
