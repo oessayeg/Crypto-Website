@@ -50,7 +50,7 @@ function Cryptocurrency(props) {
 	}, [randomCoins]);
 
 	function priceColor(price) {
-		return {fontFamily: "'Montserrat', sans-serif", color : price > 0 ? "#139c23" : "#f71414"};
+		return {fontFamily: "'Montserrat', sans-serif", color : price > 0 ? "#2ECC40" : "#f71414"};
 	}
 
 	return (

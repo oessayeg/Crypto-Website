@@ -14,22 +14,30 @@ import Paper from '@mui/material/Paper'
 import { Chart } from "chart.js/auto"
 import { Line } from "react-chartjs-2"
 import newsData from "./News.js"
-import coinGecko from "./usedApiIcon1.png"
-import newsApi from "./apiIcon2.png"
+import coinGecko from "./cryptoApiIcon.png"
+import newsApi from "./newsApi2.png"
 import whiteArrowRight from "./whiteArrowRight.png"
+import { styled } from "styled-components"
 
 // Colors
 // blue : #0074D9
 // text : #333333
 // background : #F9F9F9 or #F5F5F5
 // gold : #FFD700, #ffbf00
-// green : #2ECC40
+// #333333 : #2ECC40
 
 // black mode
 // background : #1a1a1a
 // text : #f5f5f5 
 // main.. : #222222
 // gold : #ffa500, #ffbf00
+
+const styledDiv = styled.div`
+ &:hover
+ {
+	text-decoration-color : ${(props) => props.underlineColor};
+ }
+`
 
 const options = {
 	responsive: true,
@@ -91,8 +99,8 @@ function Home(props) {
 		<main style={mainStyles}>
 			<div id="hero">
 				<div id="hero-text">
-					<h2 >Read cryptocurrency news and track market data,&nbsp; <span className="easy-word">easily.</span></h2>
-					<p>Stay updated, seize opportunities, and conquer the crypto world !</p>
+					<h2 style={{color : props.darkMode ? "#F5F5F5" : "#333333"}}>Read cryptocurrency news and track market data,&nbsp; <span className="easy-word">easily.</span></h2>
+					<p style={{color : props.darkMode ? "#F5F5F5" : "#333333"}}>Stay updated, seize opportunities, and conquer the crypto world !</p>
 					<div id="call-to-action-buttons">
 						<Link to="/news">News</Link>
 						<Link to="/cryptocurrencies">Market</Link>
@@ -100,37 +108,37 @@ function Home(props) {
 				</div>
 					<img src={heroImage} width="545px" height="545px"/>
 			</div>
-			<hr></hr>
+			<hr style={{borderBottom: "none", borderLeft: "none", borderRight: "none", borderTop: props.darkMode ? "1px solid grey" : "1px solid #333333"}}></hr>
 			<div id="call-to-use">
-				<h4 style={!props.darkMode ? {color: "#333333"} : {color : "#f5f5f5 "}}>Why choose Crypto Website ?</h4>
-				<h2 style={!props.darkMode ? {color: "#333333"} : {color : "#f5f5f5 "}}>Unlock the power of crypto with real-time market data and breaking news !</h2>
+				<h4 style={!props.darkMode ? {color: "#333333"} : {color : "#F5F5F5"}}>Why choose Crypto Website ?</h4>
+				<h2 style={!props.darkMode ? {color: "#333333"} : {color : "#F5F5F5"}}>Unlock the power of crypto with real-time market data and breaking news !</h2>
 				<div id="why-points">
-					<div className="first-point">
+					<div className="first-point" style={{backgroundColor : props.darkMode ? "#333333" : "white"}}>
 						<img src={news} width="64px"/>
 						<div>
-							<h3>Curated crypto news</h3>
-							<p>Stay ahead of the curve with our curated crypto news. Get access to in-depth articles, and breaking news from the world of cryptocurrencies.</p>
+							<h3 style={{color : props.darkMode ? "#F5F5F5" : "#333333"}}>Curated crypto news</h3>
+							<p style={{color : props.darkMode ? "#F5F5F5" : "#333333"}}>Stay ahead of the curve with our curated crypto news. Get access to in-depth articles, and breaking news from the world of cryptocurrencies.</p>
 						</div>
 					</div>
-					<div className="second-point">
+					<div className="second-point" style={{backgroundColor : props.darkMode ? "#333333" : "white"}}>
 						<img src={time} width="64px"/>
 						<div>
-							<h3>Real time prices</h3>
-							<p>Never miss out on important market movements or opportunities. Stay in control and act quickly to capitalize on favorable market conditions.</p>
+							<h3 style={{color : props.darkMode ? "#F5F5F5" : "#333333"}}>Real time prices</h3>
+							<p style={{color : props.darkMode ? "#F5F5F5" : "#333333"}}>Never miss out on important market movements or opportunities. Stay in control and act quickly to capitalize on favorable market conditions.</p>
 						</div>
 					</div>
-					<div className="third-point">
+					<div className="third-point" style={{backgroundColor : props.darkMode ? "#333333" : "white"}}>
 						<img src={handshake} width="64px"/>
 						<div>
-							<h3>User friendly</h3>
-							<p>Experience a user-friendly interface designed to simplify your crypto journey. Access data and news effortlessly.</p>
+							<h3 style={{color : props.darkMode ? "#F5F5F5" : "#333333"}}>User friendly</h3>
+							<p style={{color : props.darkMode ? "#F5F5F5" : "#333333"}}>Experience a user-friendly interface designed to simplify your crypto journey. Access data and news effortlessly.</p>
 						</div>
 					</div>
 				</div>
 			</div>
 			<div id="crypto-data-examples">
 				<div id="crypto-data-example-head">
-					<h3>Popular cryptocurrencies</h3>
+					<h3 style={{color : props.darkMode ? "#F5F5F5" : "#333333"}}>Popular cryptocurrencies</h3>
 					<Link to="cryptocurrencies">See all <img src={whiteArrowRight}/></Link>
 				</div>
 				<TableContainer  component={Paper}>
@@ -153,20 +161,20 @@ function Home(props) {
 
 							data.slice(0, 7).map(coin => {
 								return (
-								<TableRow key={coin.name} sx={{ '&:last-child td, &:last-child th': { border: 0 } }} >
-										<TableCell component="th" scope="row" paddingTop="0" style={{padding: "8px", paddingLeft : "16px", fontFamily: "'Montserrat', sans-serif"}}>
+								<TableRow key={coin.name} style={{backgroundColor : props.darkMode ? "#333333" : "white"}} sx={{ '&:last-child td, &:last-child th': { border: 0 } }} >
+										<TableCell component="th" scope="row" paddingTop="0" style={{padding: "8px", paddingLeft : "16px", fontFamily: "'Montserrat', sans-serif", borderColor: props.darkMode ? "grey" : ""}}>
 											<div id="coin-name-block">
 												<img src={coin.image} width="32px" height="32px"/>
-												<p>{coin.name}</p>
+												<p style={{color : props.darkMode ? "#F5F5F5" : ""}}>{coin.name}</p>
 											</div>
 										</TableCell>
-										<TableCell align="right" style={{ padding: "8px", fontFamily: "'Montserrat', sans-serif" }}>${coin.current_price > 1 ? coin.current_price.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") : coin.current_price.toFixed(5)}</TableCell>
-										<TableCell align="right" style={{padding: "8px", fontFamily: "'Montserrat', sans-serif"}}><span style={{color : coin.price_change_percentage_1h_in_currency > 0 ? "#139c23" : "#f71414"}}>{coin.price_change_percentage_1h_in_currency.toFixed(2)}%</span></TableCell>
-										<TableCell align="right" style={{padding: "8px", fontFamily: "'Montserrat', sans-serif"}}><span style={{color : coin.price_change_percentage_7d_in_currency > 0 ? "#139c23" : "#f71414"}}>{coin.price_change_percentage_7d_in_currency.toFixed(2)}%</span></TableCell>
-										<TableCell align="right" style={{padding: "8px", fontFamily: "'Montserrat', sans-serif"}}><span style={{color : coin.price_change_percentage_30d_in_currency > 0 ? "#139c23" : "#f71414"}}>{coin.price_change_percentage_30d_in_currency.toFixed(2)}%</span></TableCell>
-										<TableCell align="right" style={{padding: "8px", fontFamily: "'Montserrat', sans-serif"}}>${coin.total_volume.toLocaleString().replaceAll(/\s/g, ",")}</TableCell>
-										<TableCell align="right" style={{padding: "8px", fontFamily: "'Montserrat', sans-serif"}}>${Math.ceil(coin.current_price * coin.circulating_supply).toLocaleString().replaceAll(/\s/g, ',')}</TableCell>
-										<TableCell align="right" style={{paddingRight: "0", paddingTop: "8px", paddingBottom: "8px", paddingLeft: "8px"}}>
+										<TableCell align="right" style={{padding: "8px", fontFamily: "'Montserrat', sans-serif", color: props.darkMode ? "#F5F5F5" : "#333333", borderColor: props.darkMode ? "grey" : ""}}>${coin.current_price > 1 ? coin.current_price.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") : coin.current_price.toFixed(5)}</TableCell>
+										<TableCell align="right" style={{padding: "8px", fontFamily: "'Montserrat', sans-serif", borderColor: props.darkMode ? "grey" : ""}}><span style={{color : coin.price_change_percentage_1h_in_currency > 0 ? "#2ECC40" : "#f71414"}}>{coin.price_change_percentage_1h_in_currency.toFixed(2)}%</span></TableCell>
+										<TableCell align="right" style={{padding: "8px", fontFamily: "'Montserrat', sans-serif", borderColor: props.darkMode ? "grey" : ""}}><span style={{color : coin.price_change_percentage_7d_in_currency > 0 ? "#2ECC40" : "#f71414"}}>{coin.price_change_percentage_7d_in_currency.toFixed(2)}%</span></TableCell>
+										<TableCell align="right" style={{padding: "8px", fontFamily: "'Montserrat', sans-serif", borderColor: props.darkMode ? "grey" : ""}}><span style={{color : coin.price_change_percentage_30d_in_currency > 0 ? "#2ECC40" : "#f71414"}}>{coin.price_change_percentage_30d_in_currency.toFixed(2)}%</span></TableCell>
+										<TableCell align="right" style={{padding: "8px", fontFamily: "'Montserrat', sans-serif", color: props.darkMode ? "#F5F5F5" : "#333333", borderColor: props.darkMode ? "grey" : ""}}>${coin.total_volume.toLocaleString().replaceAll(/\s/g, ",")}</TableCell>
+										<TableCell align="right" style={{padding: "8px", fontFamily: "'Montserrat', sans-serif", color: props.darkMode ? "#F5F5F5" : "#333333", borderColor: props.darkMode ? "grey" : ""}}>${Math.ceil(coin.current_price * coin.circulating_supply).toLocaleString().replaceAll(/\s/g, ',')}</TableCell>
+										<TableCell align="right" style={{paddingRight: "0", paddingTop: "8px", paddingBottom: "8px", paddingLeft: "8px",  borderColor: props.darkMode ? "grey" : ""}}>
 											<div style={{display: "flex", justifyContent: "center"}}>
 											<div style={{width:"120px", height:"50px", display: "flex"}}>
 												<Line data={{
@@ -195,37 +203,40 @@ function Home(props) {
 			</div>
 			<div id="news-example">
 				<div id="news-header">
-						<h3>News</h3>
+						<h3 style={{color: props.darkMode ? "#f5f5f5" : "#333333"}}>News</h3>
 						<Link to="/news">See all <img src={whiteArrowRight}/> </Link>
 				</div>
 				{!gotNews ? <h1>Waiting for the news api</h1> :
 				<div id="some-news">
-					<div onClick={() => window.open(newsExample[0].url, "_blank")}>
+					<div onClick={() => window.open(newsExample[0].url, "_blank")} style={
+						{backgroundColor: props.darkMode ? "#333333" : "white", textDecorationColor: props.darkMode ? "#F5F5F5" : "#333333" }}>
 						<img src={newsExample[0].urlToImage}/>
-						<h2>{newsExample[0].title}</h2>
-						<p>{newsExample[0].description}</p>
-						<h5 style={{margin : "0", textAlign :"right", paddingTop: "0px"}}>Author : {newsExample[0].author}</h5>
+						<h2 style={{color: props.darkMode ? "#f5f5f5" : "#333333"}}>{newsExample[0].title}</h2>
+						<p style={{color: props.darkMode ? "#f5f5f5" : "#333333"}}>{newsExample[0].description}</p>
+						<h5 style={{margin : "0", color: props.darkMode ? "#f5f5f5" : "#333333"}}>Author : {newsExample[0].author}</h5>
 					</div>
-					<div onClick={() => window.open(newsExample[1].url, "_blank")}>
+					<div onClick={() => window.open(newsExample[1].url, "_blank")} style={
+						{backgroundColor: props.darkMode ? "#333333" : "white", textDecorationColor: props.darkMode ? "#F5F5F5" : "#333333"}}>
 						<img src={newsExample[1].urlToImage}/>
-						<h2>{newsExample[1].title}</h2>
-						<p>{newsExample[1].description}</p>
-						<h5 style={{margin : "0"}}>Author : {newsExample[1].author}</h5>
+						<h2 style={{color: props.darkMode ? "#f5f5f5" : "#333333"}}>{newsExample[1].title}</h2>
+						<p style={{color: props.darkMode ? "#f5f5f5" : "#333333"}}>{newsExample[1].description}</p>
+						<h5 style={{margin : "0", color: props.darkMode ? "#f5f5f5" : "#333333"}}>Author : {newsExample[1].author}</h5>
 					</div>
-					<div onClick={() => window.open(newsExample[2].url, "_blank")}>
+					<div onClick={() => window.open(newsExample[2].url, "_blank")} style={
+						{backgroundColor: props.darkMode ? "#333333" : "white", textDecorationColor: props.darkMode ? "#F5F5F5" : "#333333"}}>
 						<img src={newsExample[2].urlToImage}/>
-						<h2>{newsExample[2].title}</h2>
-						<p>{newsExample[2].description}</p>
-						<h5 style={{margin : "0"}}>Author : {newsExample[2].author}</h5>
+						<h2 style={{color: props.darkMode ? "#f5f5f5" : "#333333"}}>{newsExample[2].title}</h2>
+						<p style={{color: props.darkMode ? "#f5f5f5" : "#333333"}}>{newsExample[2].description}</p>
+						<h5 style={{margin : "0", color: props.darkMode ? "#f5f5f5" : "#333333"}}>Author : {newsExample[2].author}</h5>
 					</div>
 				</div>
 				}
 			</div>
-			<hr />
+			<hr style={{borderBottom: "none", borderLeft: "none", borderRight: "none", borderTop: props.darkMode ? "1px solid grey" : "1px solid #333333"}}></hr>
 			<div id="used-apis">
-				<h2 align="center">Used apis</h2>
+				<h2 align="center" style={{color: props.darkMode ? "#f5f5f5" : "#333333"}}>Used apis</h2>
 				<div id="api-icons">
-					<a href="https://www.coingecko.com/en/api" target="_blank"><img src={coinGecko} width="220px"/></a>
+					<a href="https://www.coingecko.com/en/api" target="_blank" style={{display: "flex", alignItems: "center", gap: "20px"}}><img src={coinGecko} width="64px" height="64px"/><strong style={{color : props.darkMode ? "#F5F5F5" : "#333333", fontSize: "25px"}}>CoinGecko</strong></a>
 					<a href="https://newsapi.org/" target="_blank"><img src={newsApi} width="220px"/></a>
 				</div>
 			</div>

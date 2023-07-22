@@ -9,8 +9,7 @@ header
 	padding-right: 40px;
 	justify-content: center;
 	align-items: center;
-	background-color: white;
-	box-shadow: 0px 1px 5px rgb(104, 104, 104);
+	box-shadow: 0px 1px 5px #333333;
 	transition: background-color 1s;
 }
 

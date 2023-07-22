@@ -88,11 +88,9 @@
 
 #why-points > div
 {
-	/* border: 1px solid #333333; */
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	background-color: white;
 }
 
 .first-point
@@ -123,15 +121,12 @@
 	text-align: center;
 	margin-top: 10px;
 	margin-bottom: 24px;
-	font-weight: 900;
-	color: #333333;
 }
 
 #why-points > div > div > p
 {
 	margin: 20px;
 	font-size: 19px;
-	color: #333333;
 }
 
 #crypto-data-examples
@@ -147,8 +142,8 @@
 	flex-direction: row;
 	justify-content: space-between;
 	align-items: center;
-	padding-left: 15px;
-	padding-right: 15px;
+	padding-left: 1px;
+	padding-right: 1px;
 	font-family: 'Montserrat', sans-serif;
 }
 
@@ -166,8 +161,8 @@
 	flex-direction: row;
 	justify-content: space-between;
 	align-items: center;
-	padding-left : 15px;
-	padding-right : 15px;
+	padding-left : 1px;
+	padding-right : 1px;
 }
 
 #news-example
@@ -200,7 +195,7 @@
 {
 	text-decoration: underline;
 	cursor: pointer;
-	box-shadow: 1px 1px 4px #333333;
+	box-shadow: 2px 2px 4px grey;
 	box-sizing: border-box;
 }
 
@@ -209,7 +204,6 @@
 	transition: box-shadow 0.6s ease;
 	padding-bottom: 50px;
 	position: relative;
-	background-color: white;
 }
 
 #some-news > div > p
@@ -245,7 +239,6 @@
 #api-icons
 {
 	margin-top: 40px;
-	/* margin-bottom: 60px; */
 	display: flex;
 	flex-direction: row;
 	justify-content: space-around;
@@ -289,7 +282,7 @@
 
 .easy-word
 {
-	background: linear-gradient(to right, #FFBF00, #333333);
+	background: linear-gradient(to top,#FFBF00, #333333);
 	-webkit-background-clip: text;
 	-webkit-text-fill-color: transparent;
 }

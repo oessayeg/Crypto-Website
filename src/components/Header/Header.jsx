@@ -45,7 +45,7 @@ function Header(props) {
 	}, [isHovered]);
 
 	return (
-		<header style={props.darkMode ? {backgroundColor: "#333333", boxShadow:" 0px 1px 5px white"} : {backgroundColor: "#F5F5F5"}}>
+		<header style={props.darkMode ? {backgroundColor: "#333333", boxShadow:" 0px 1px 5px black"} : {backgroundColor: "white"}}>
 			<div>
 				<img src={ethereum} width="50px"></img>
 				<Link to="/" style={{color : props.darkMode ? "#F5F5F5" : "#333333"}}>Crypto Website</Link>
