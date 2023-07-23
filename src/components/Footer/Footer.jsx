@@ -12,7 +12,7 @@ function Footer(props) {
 				<a href="http://linkedin.com/in/othmane-essayegh" target="_blank"><img src={linkedinIcon} width="22px"/></a>
 				<a href="https://github.com/oessayeg" target="_blank"><img src={githubIcon} width="22px"/></a>
 			</p>
-			<p className="copyright">Copyright &copy; 2023 Crypto Website.&nbsp; All rights reserved.</p>
+			<p className="copyright">Copyright &copy; 2023 CryptoQuick.&nbsp; All rights reserved.</p>
 		</div>
 	</footer>;
 }

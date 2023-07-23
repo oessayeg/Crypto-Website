@@ -5,7 +5,7 @@ import lightModeWhite from "./images/lightModeWhite.png"
 import lightModeBlack from "./images/lightModeBlack.png"
 import nightModeWhite from "./images/nightMode.png"
 import nightModeBlack from "./images/nightModeBlack.png"
-import ethereum from "./images/binanceIcon.png"
+import ethereum from "./images/ether2.png"
 import styled from "styled-components"
 import { useEffect } from "react"
 
@@ -44,7 +44,7 @@ function Header(props) {
 		<header style={props.darkMode ? {backgroundColor: "#333333", boxShadow:" 0px 1px 5px black"} : {backgroundColor: "white"}}>
 			<div>
 				<img src={ethereum} width="50px"></img>
-				<Link to="/" style={{color : props.darkMode ? "#F5F5F5" : "#333333"}}>Crypto Website</Link>
+				<Link to="/" style={{color : props.darkMode ? "#F5F5F5" : "#333333"}}>CryptoQuick</Link>
 			</div>
 			<ul>
 				<StyledLi background={props.darkMode ? "#F5F5F5" : "#333333"}>

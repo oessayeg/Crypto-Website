@@ -58,7 +58,7 @@
 {
 	text-decoration: underline;
 	cursor: pointer;
-	box-shadow: 2px 2px 5px rgb(108, 108, 108);
+	box-shadow: 2px 2px 5px rgb(95, 95, 95);
 }
 
 .alice-carousel__prev-btn
@@ -149,7 +149,6 @@
 
 #all-news-section:hover
 {
-	/* text-decoration: underline; */
 	cursor: pointer;
 	transform: scale(1.007);
 	box-shadow: 2px 2px 4px rgb(80, 80, 80);
@@ -169,8 +168,6 @@
 	gap: 1px;
 	margin-left: 15px;
 	margin-right: 15px;
-	/* Check later */
-	box-shadow: 1px 1px 3px black;
 }
 
 #landing-news > div > img

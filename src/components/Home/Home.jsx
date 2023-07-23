@@ -110,7 +110,7 @@ function Home(props) {
 			</div>
 			<hr style={{borderBottom: "none", borderLeft: "none", borderRight: "none", borderTop: props.darkMode ? "1px solid grey" : "1px solid #333333"}}></hr>
 			<div id="call-to-use">
-				<h4 style={!props.darkMode ? {color: "#333333"} : {color : "#F5F5F5"}}>Why choose Crypto Website ?</h4>
+				<h4 style={!props.darkMode ? {color: "#333333"} : {color : "#F5F5F5"}}>Why choose CryptoQuick ?</h4>
 				<h2 style={!props.darkMode ? {color: "#333333"} : {color : "#F5F5F5"}}>Unlock the power of crypto with real-time market data and breaking news !</h2>
 				<div id="why-points">
 					<div className="first-point" style={{backgroundColor : props.darkMode ? "#333333" : "white"}}>
@@ -155,13 +155,13 @@ function Home(props) {
 								<TableCell align="center" style={{paddingRight: "0"}}><strong>Last 7 days</strong></TableCell>
 							</TableRow>
 						</TableHead>
-					<TableBody>
+					<TableBody style={{borderBottom : props.darkMode ? "1px solid grey" : ""}}>
 						{
 							!gotData ? <div>Waiting for data</div> :
 
 							data.slice(0, 7).map(coin => {
 								return (
-								<TableRow key={coin.name} style={{backgroundColor : props.darkMode ? "#333333" : "white"}} sx={{ '&:last-child td, &:last-child th': { border: 0 } }} >
+								<TableRow key={coin.name} style={{backgroundColor : props.darkMode ? "#1a1a1a" : "white"}} sx={{ '&:last-child td, &:last-child th': { border: 0 } }} >
 										<TableCell component="th" scope="row" paddingTop="0" style={{padding: "8px", paddingLeft : "16px", fontFamily: "'Montserrat', sans-serif", borderColor: props.darkMode ? "grey" : ""}}>
 											<div id="coin-name-block">
 												<img src={coin.image} width="32px" height="32px"/>
