@@ -1,23 +1,21 @@
-import React from "react"
-// import heroImage from "./heroImage.gif"
-import heroImage from "./hero2.png"
-import "../../style/Home.css"
-import { Link } from "react-router-dom"
-import news from "./newspaper2.png"
-import time from "./time4.png"
-import handshake from "./handshake2.png"
 import { Table, TableContainer, TableHead, TableRow, TableCell, TableBody } from "@mui/material"
-import crData from "./Data"
 import { useEffect } from "react"
 import { useState } from "react"
-import Paper from '@mui/material/Paper'
 import { Chart } from "chart.js/auto"
+import { Link } from "react-router-dom"
 import { Line } from "react-chartjs-2"
-import newsData from "./News.js"
-import coinGecko from "./cryptoApiIcon.png"
-import newsApi from "./newsApi2.png"
-import whiteArrowRight from "./whiteArrowRight.png"
-import { styled } from "styled-components"
+import Paper from '@mui/material/Paper'
+import React from "react"
+import newsData from "./data/News.js"
+import handshake from "./images/handshake.png"
+import heroImage from "./images/heroImage.png"
+import news from "./images/newspaper.png"
+import time from "./images/time.png"
+import crData from "./data/data2"
+import coinGecko from "./images/coinGeckoIcon.png"
+import newsApi from "./images/newsApiIcon.png"
+import whiteArrowRight from "./images/arrow.png"
+import "../../style/Home.css"
 
 // Colors
 // blue : #0074D9
@@ -31,13 +29,6 @@ import { styled } from "styled-components"
 // text : #f5f5f5 
 // main.. : #222222
 // gold : #ffa500, #ffbf00
-
-const styledDiv = styled.div`
- &:hover
- {
-	text-decoration-color : ${(props) => props.underlineColor};
- }
-`
 
 const options = {
 	responsive: true,

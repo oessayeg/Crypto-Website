@@ -58,7 +58,7 @@
 {
 	text-decoration: underline;
 	cursor: pointer;
-	box-shadow: 2px 2px 5px rgb(95, 95, 95);
+	box-shadow: 2px 2px 5px rgb(108, 108, 108);
 }
 
 .alice-carousel__prev-btn
@@ -194,7 +194,7 @@
 .alice-carousel__dots
 {
 	position: absolute;
-	bottom: 85px;
+	bottom: 45px;
 	left: 44%;
 }
 

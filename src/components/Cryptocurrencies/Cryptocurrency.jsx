@@ -2,7 +2,7 @@ import React, { useState } from "react"
 import { useEffect } from "react"
 import AliceCarousel from 'react-alice-carousel'
 import 'react-alice-carousel/lib/alice-carousel.css'
-import coins from "../Home/Data.js"
+import coins from "../Home/data/data2.js"
 import "../../style/Cryptocurrency.css"
 import { Chart } from "chart.js/auto"
 import { Line } from "react-chartjs-2"
@@ -10,6 +10,8 @@ import Paper from '@mui/material/Paper'
 import { Table, TableContainer, TableHead, TableRow, TableCell, TableBody, makeStyles } from "@mui/material"
 import Pagination from '@mui/material/Pagination';
 import Stack from '@mui/material/Stack';
+import Box from '@mui/material/Box';
+import LinearProgress from '@mui/material/LinearProgress';
 
 const options = {
 	responsive: true,
@@ -32,7 +34,6 @@ const options = {
 	},
 };
 
-
 function Cryptocurrency(props) {
 
 	const [randomCoins, setRandomCoins] = useState(null);
@@ -42,7 +43,7 @@ function Cryptocurrency(props) {
 	const [isFocused, setIsFocused] = useState(false);
 
 	useEffect(() => {
-		setRandomCoins(coins.slice(0, 8));
+			setRandomCoins(coins.slice(0, 8));
 	}, []);
 
 	useEffect(() => {
@@ -64,7 +65,8 @@ function Cryptocurrency(props) {
 				<h1 style={{color: props.darkMode ? "#f5f5f5" : "#333333"}}>Crypto Market Data</h1>
 				<p style={{color: props.darkMode ? "#f5f5f5" : "#333333"}}>Stay updated and track your favorite cryptocurrency</p>
 			</div>
-			<div id="trending-coins-carousel">
+			<div id="trending-coins-carousel" style={{paddingRight : !gotRandomCoins && "24px",
+					paddingLeft: !gotRandomCoins && "24px"}}>
 				{gotRandomCoins ? 
 				<AliceCarousel responsive={{
 					0: {
@@ -91,7 +93,16 @@ function Cryptocurrency(props) {
 					);
 				})}
 				</AliceCarousel>
-				: <h1>Loading</h1>}
+				:
+				<Box sx={{ width: '100%' }}>
+					<LinearProgress sx={{
+						backgroundColor : "#ffbf00",
+						'& .MuiLinearProgress-bar' : {
+								backgroundColor: "#333333"
+						}
+				}}/>
+			  	</Box>
+			  }
 			</div>
 			<h2 style={{marginLeft: "24px", marginRight: "24px", fontFamily: "'Montserrat', sans-serif", textAlign: "center", color: props.darkMode ? "#f5f5f5" : "#333333"}}>Cryptocurrencies data by market cap</h2>
 			<div id="input-box">

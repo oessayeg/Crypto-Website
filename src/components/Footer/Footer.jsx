@@ -1,7 +1,7 @@
 import React from "react"
 import "../../style/Footer.css"
-import linkedinIcon from "./linkedinIcon.png"
-import githubIcon from "./githubIcon.png"
+import linkedinIcon from "./images/linkedinIcon.png"
+import githubIcon from "./images/githubIcon.png"
 import { Link } from "react-router-dom"
 
 function Footer(props) {

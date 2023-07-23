@@ -1,13 +1,12 @@
 import React, { useState } from "react"
-import "../../style/Header.css"
 import { Link } from "react-router-dom"
+import nightModeWhite from "./images/nightModeWhite.png"
+import nightModeBlack from "./images/nightModeBlack.png"
 import lightModeWhite from "./images/lightModeWhite.png"
 import lightModeBlack from "./images/lightModeBlack.png"
-import nightModeWhite from "./images/nightMode.png"
-import nightModeBlack from "./images/nightModeBlack.png"
-import ethereum from "./images/ether2.png"
+import mainIcon from "./images/mainIcon.png"
 import styled from "styled-components"
-import { useEffect } from "react"
+import "../../style/Header.css"
 
 const StyledLi = styled.li`
   &::after {
@@ -33,7 +32,7 @@ const StyledDarkModeButton = styled.li`
 `
 
 function Header(props) {
-	// The header will have its own color and the background a little bit similar	
+
 	const [isHovered, setIsHovered] = useState(false);
 
 	const linkStyle = {
@@ -43,7 +42,7 @@ function Header(props) {
 	return (
 		<header style={props.darkMode ? {backgroundColor: "#333333", boxShadow:" 0px 1px 5px black"} : {backgroundColor: "white"}}>
 			<div>
-				<img src={ethereum} width="50px"></img>
+				<img src={mainIcon} width="50px"></img>
 				<Link to="/" style={{color : props.darkMode ? "#F5F5F5" : "#333333"}}>CryptoQuick</Link>
 			</div>
 			<ul>

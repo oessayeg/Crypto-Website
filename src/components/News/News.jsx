@@ -1,16 +1,10 @@
 import React, { useEffect, useState } from "react"
-import bitcoin from "./Bitcoin"
-import web3 from "./Web3"
-import blockchain from "./Blockchain"
-import 'react-alice-carousel/lib/alice-carousel.css'
 import AliceCarousel from "react-alice-carousel"
+import bitcoin from "./data/Bitcoin"
+import web3 from "./data/Web3"
+import blockchain from "./data/Blockchain"
+import 'react-alice-carousel/lib/alice-carousel.css'
 import "../../style/News.css"
-import styled from "styled-components";
-
-
-const styledAlice = styled(AliceCarousel)`
-	
-`
 
 function News(props)
 {
