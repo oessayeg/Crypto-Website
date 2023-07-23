@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react"
-import { Route, Routes } from "react-router-dom"
+import { json, Route, Routes } from "react-router-dom"
 import News from "./components/News/News"
 import Cryptocurrency from "./components/Cryptocurrencies/Cryptocurrency"
 import Home from "./components/Home/Home"

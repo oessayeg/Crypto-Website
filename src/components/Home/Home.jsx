@@ -132,6 +132,7 @@ function Home(props) {
 					<h3 style={{color : props.darkMode ? "#F5F5F5" : "#333333"}}>Popular cryptocurrencies</h3>
 					<Link to="cryptocurrencies">See all <img src={whiteArrowRight}/></Link>
 				</div>
+				{gotData ? 
 				<TableContainer  component={Paper}>
 					<Table sx={{ minWidth: 650 }} aria-label="Table of crypto market data">
 						<TableHead style={{backgroundColor: "#ffbf00"}}>
@@ -147,13 +148,10 @@ function Home(props) {
 							</TableRow>
 						</TableHead>
 					<TableBody style={{borderBottom : props.darkMode ? "1px solid grey" : ""}}>
-						{
-							!gotData ? <div>Waiting for data</div> :
-
-							data.slice(0, 7).map(coin => {
+							{data.slice(0, 7).map((coin, index) => {
 								return (
-								<TableRow key={coin.name} style={{backgroundColor : props.darkMode ? "#1a1a1a" : "white"}} sx={{ '&:last-child td, &:last-child th': { border: 0 } }} >
-										<TableCell component="th" scope="row" paddingTop="0" style={{padding: "8px", paddingLeft : "16px", fontFamily: "'Montserrat', sans-serif", borderColor: props.darkMode ? "grey" : ""}}>
+								<TableRow key={index} style={{backgroundColor : props.darkMode ? "#1a1a1a" : "white"}} sx={{ '&:last-child td, &:last-child th': { border: 0 } }} >
+										<TableCell component="th" scope="row" style={{padding: "8px", paddingLeft : "16px", fontFamily: "'Montserrat', sans-serif", borderColor: props.darkMode ? "grey" : ""}}>
 											<div id="coin-name-block">
 												<img src={coin.image} width="32px" height="32px"/>
 												<p style={{color : props.darkMode ? "#F5F5F5" : ""}}>{coin.name}</p>
@@ -167,30 +165,28 @@ function Home(props) {
 										<TableCell align="right" style={{padding: "8px", fontFamily: "'Montserrat', sans-serif", color: props.darkMode ? "#F5F5F5" : "#333333", borderColor: props.darkMode ? "grey" : ""}}>${Math.ceil(coin.current_price * coin.circulating_supply).toLocaleString().replaceAll(/\s/g, ',')}</TableCell>
 										<TableCell align="right" style={{paddingRight: "0", paddingTop: "8px", paddingBottom: "8px", paddingLeft: "8px",  borderColor: props.darkMode ? "grey" : ""}}>
 											<div style={{display: "flex", justifyContent: "center"}}>
-											<div style={{width:"120px", height:"50px", display: "flex"}}>
-												<Line data={{
-													labels : Array.from({ length: coin.sparkline_in_7d.price.length }, (_, index) => index + 1),
-													datasets : [
-														{
-																label: 'Sales',
-																data: coin.sparkline_in_7d.price,
-																borderColor: coin.price_change_percentage_7d_in_currency > 0 ? '#2ECC40' : '#f71414',
-																borderWidth: 1.5, // Optional: Border width of the bars/points
-																pointRadius: 0,
-														}
-													]
-												}} options={options}/>
-											</div>
+												<div style={{width:"120px", height:"50px", display: "flex"}}>
+													<Line data={{
+														labels : Array.from({ length: coin.sparkline_in_7d.price.length }, (_, index) => index + 1),
+														datasets : [
+															{
+																	label: 'Sales',
+																	data: coin.sparkline_in_7d.price,
+																	borderColor: coin.price_change_percentage_7d_in_currency > 0 ? '#2ECC40' : '#f71414',
+																	borderWidth: 1.5, // Optional: Border width of the bars/points
+																	pointRadius: 0,
+															}
+														]
+													}} options={options}/>
+												</div>
 											</div>
 										</TableCell>
 									</TableRow>
 								)
-							})
-							
-						}
+							})}
 					</TableBody>
 					</Table>
-				</TableContainer>
+				</TableContainer> : <h1>Loading</h1>}
 			</div>
 			<div id="news-example">
 				<div id="news-header">

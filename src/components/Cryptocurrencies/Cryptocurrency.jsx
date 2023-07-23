@@ -80,7 +80,7 @@ function Cryptocurrency(props) {
 				disableButtonsControls="true" disableDotsControls="true" animationDuration={1500}>
 				{randomCoins.map(coin => {
 					return (
-						<div id="trending-coins-block">
+						<div id="trending-coins-block" key={coin.symbol}>
 							<img src={coin.image} width="110px" height="110px"/>	
 							<div>
 								<div>
@@ -129,7 +129,7 @@ function Cryptocurrency(props) {
 					</TableHead>
 					<TableBody style={{borderBottom: "1px solid grey", borderBottomRightRadius: "0"}}>
 							{coins.filter(coin => coin.name.toLowerCase().includes(searchPattern.toLowerCase())).slice((page - 1) * 13, (page - 1) * 13 + 13).map((coin) => (
-								<TableRow key={coin.name} sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
+								<TableRow sx={{ '&:last-child td, &:last-child th': { border: 0 } }} key={coin.name}>
 									<TableCell style={{backgroundColor: props.darkMode ? "#1a1a1a" : "", transition : "background-color 1s ease", borderColor: props.darkMode ? "grey" : ""}}>
 										<div id="coin-icon-block">
 											<img src={coin.image} width="40px"/>
@@ -165,13 +165,13 @@ function Cryptocurrency(props) {
 									</TableCell>
 								</TableRow>
 							))}
-        </TableBody>
+        			</TableBody>
 				</Table>
 		</TableContainer>
 			</div>
 			<div id="pagination">
 				<Stack spacing={2}>
-					<Pagination count={(coins.filter(coin => coin.name.toLowerCase().includes(searchPattern.toLowerCase())).length / 13).toFixed(0)}
+					<Pagination count={Number((coins.filter(coin => coin.name.toLowerCase().includes(searchPattern.toLowerCase())).length / 13).toFixed(0))}
 					onChange={(e, value) => {setPage(value)}}
 					sx={{
 						'& .MuiButtonBase-root' : {

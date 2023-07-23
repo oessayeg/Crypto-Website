@@ -17,17 +17,17 @@ const StyledLi = styled.li`
 	display: block;
 	transition: all 0.4s ease;
 	bottom: -10%;
-	background-color: ${(props) => props.background};
+	background-color: ${(props) => props.$background};
   }
 `
 
 const StyledDarkModeButton = styled.li`
   border: ${(props) => props.darkMode ? "1px solid white;" : "1px solid #333333;"}
-  background-color : ${(props) => props.darkMode ? "white" : "#333333"};
+  background-color : ${(props) => props.$darkmode ? "white" : "#333333"};
 
   &:hover
   {
-	background-color : ${(props) => props.darkMode ? "#333333;" : "white;"}
+	background-color : ${(props) => props.$darkmode ? "#333333;" : "white;"}
   }
 `
 
@@ -46,16 +46,16 @@ function Header(props) {
 				<Link to="/" style={{color : props.darkMode ? "#F5F5F5" : "#333333"}}>CryptoQuick</Link>
 			</div>
 			<ul>
-				<StyledLi background={props.darkMode ? "#F5F5F5" : "#333333"}>
+				<StyledLi $background={props.darkMode ? "#F5F5F5" : "#333333"}>
 					<Link to="/" style={linkStyle}>Home</Link>
 				</StyledLi>
-				<StyledLi background={props.darkMode ? "#F5F5F5" : "#333333"}>
+				<StyledLi $background={props.darkMode ? "#F5F5F5" : "#333333"}>
 					<Link to="/cryptocurrencies" style={linkStyle}>Market</Link>
 				</StyledLi>
-				<StyledLi background={props.darkMode ? "#F5F5F5" : "#333333"}>
+				<StyledLi $background={props.darkMode ? "#F5F5F5" : "#333333"}>
 					<Link to="/news" style={linkStyle}>News</Link>
 				</StyledLi>
-				<StyledDarkModeButton darkMode={props.darkMode} background={props.darkMode ? "#333333" : "#F5F5F5"}
+				<StyledDarkModeButton $darkmode={props.darkMode}
 				 onClick={(e) => props.setDarkMode(!props.darkMode)} className="last-li" onMouseEnter={(e) => setIsHovered(hover => !hover)}
 				 onMouseLeave={(e) => setIsHovered(hover => !hover)}>
 					<img src={isHovered ? (props.darkMode ? lightModeWhite : nightModeBlack) : (props.darkMode ? lightModeBlack : nightModeWhite) } width="23px"/>

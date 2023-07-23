@@ -71,7 +71,7 @@ function News(props)
 			infinite="true" autoPlayInterval={5000}>
 				{landingCarousel.filter(article => article.author != "Filip De Mott").map(article => {
 					return (
-						<div id="landing-news" style={{boxShadow: props.darkMode && "0px 0px 7px #555555"}}>
+						<div key={article.title} id="landing-news" style={{boxShadow: props.darkMode && "0px 0px 7px #555555"}}>
 							<div style={{height: "500px", flexGrow: "1"}} onClick={(e) => window.open(article.url, "_blank")}>
 								<img style={{width: "100%", height: "100%"}} src={article.urlToImage}/>
 								<div style={{position: "absolute", bottom : "20px"}}>
@@ -91,7 +91,7 @@ function News(props)
 				<AliceCarousel responsive={{ 0: {items : "3"}}} disableDotsControls="true" autoPlay="true" animationDuration={1000}
 				autoPlayInterval={6000} infinite="true" style={{paddingLeft: "30px"}}>
 					{firstSubjCarousel.filter(article => article.author != "msmash").map((article, index) => {
-						return <div id="first-subject-news" onClick={(e) => {
+						return <div id="first-subject-news" key={article.description} onClick={(e) => {
 							window.open(article.url, "_blank")
 						}} style={{marginRight: "15px", marginLeft: "15px",
 						backgroundColor: props.darkMode && "#333333", textDecorationColor: props.darkMode && "#F5F5F5"}}>
@@ -113,7 +113,7 @@ function News(props)
 				<AliceCarousel responsive={{ 0: {items : "3"}}} disableDotsControls="true" autoPlay="true" animationDuration={1000}
 				autoPlayInterval={5000} infinite="true" style={{paddingLeft: "30px"}} autoPlayDirection="rtl">
 					{secondSubjectCarousel.filter(article => article.author != "msmash").map((article, index) => {
-						return <div id="first-subject-news" onClick={(e) => {
+						return <div key={index} id="first-subject-news" onClick={(e) => {
 							window.open(article.url, "_blank")
 						}} style={{marginRight: "15px", marginLeft: "15px", backgroundColor: props.darkMode && "#333333",
 						textDecorationColor: props.darkMode && "#F5F5F5"}}>
@@ -133,7 +133,7 @@ function News(props)
 					<div id="news-part">
 						{bitcoinNews.filter(article => (article.author != "Deanna Ritchie" && article.author != "George Glover" && article.author != "msmash")).slice(0, 13).map(article => {
 							return (
-								<div id="all-news-section" onClick={(e) => window.open(article.url, "_blank")}
+								<div key={article.url} id="all-news-section" onClick={(e) => window.open(article.url, "_blank")}
 								style={{backgroundColor : props.darkMode && "#333333"}}>
 									<img src={article.urlToImage} width="170px" loading="lazy"/>
 									<div>
@@ -148,7 +148,7 @@ function News(props)
 					<div id="news-part">
 					{web3News.slice(0, 13).map(article => {
 						return (
-							<div id="all-news-section" onClick={(e) => window.open(article.url, "_blank")}
+							<div key={article.url} id="all-news-section" onClick={(e) => window.open(article.url, "_blank")}
 							style={{backgroundColor : props.darkMode && "#333333", textDecorationColor: props.darkMode && "#f5f5f5"}}>
 								<img src={article.urlToImage} width="170px" loading="lazy"/>
 								<div>
