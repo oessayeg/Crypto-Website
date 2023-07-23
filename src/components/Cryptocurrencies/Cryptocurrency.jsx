@@ -8,9 +8,8 @@ import { Chart } from "chart.js/auto"
 import { Line } from "react-chartjs-2"
 import Paper from '@mui/material/Paper'
 import { Table, TableContainer, TableHead, TableRow, TableCell, TableBody, makeStyles } from "@mui/material"
-// import Pagination from '@mui/material/Pagination';
+import Pagination from '@mui/material/Pagination';
 import Stack from '@mui/material/Stack';
-import { Pagination } from "antd";
 
 const options = {
 	responsive: true,
@@ -145,7 +144,7 @@ function Cryptocurrency(props) {
 																label: 'Sales',
 																data: coin.sparkline_in_7d.price,
 																borderColor: coin.price_change_percentage_7d_in_currency > 0 ? '#2ECC40' : '#f71414',
-																borderWidth: 1.5, // Optional: Border width of the bars/points
+																borderWidth: 1.5,
 																pointRadius: 0,
 														}
 													]
@@ -160,12 +159,27 @@ function Cryptocurrency(props) {
 		</TableContainer>
 			</div>
 			<div id="pagination">
-				{/* <Stack spacing={2}>
-					<Pagination count={(coins.filter(coin => coin.name.toLowerCase().includes(searchPattern.toLowerCase())).length / 13).toFixed(0)} onChange={(e, value) => {setPage(value)}}/>
-				</Stack> */}
-				<Pagination current={page} total={130} pageSize={13}
-				onChange={(e) => setPage(e)} showSizeChanger="false"
-				/>
+				<Stack spacing={2}>
+					<Pagination count={(coins.filter(coin => coin.name.toLowerCase().includes(searchPattern.toLowerCase())).length / 13).toFixed(0)}
+					onChange={(e, value) => {setPage(value)}}
+					sx={{
+						'& .MuiButtonBase-root' : {
+							color: props.darkMode ? "#ffbf00" : ""
+						},
+						'& .MuiSvgIcon-root' : {
+							fill : props.darkMode ? "#ffbf00" : ""
+						},
+						'& .MuiPaginationItem-root' : {
+							color : props.darkMode ? "#ffbf00" : ""
+						},
+						'& .MuiButtonBase-root:hover' : {
+							backgroundColor: props.darkMode ? "rgb(51, 51, 51 ,0.5)" : ""
+						},
+						'& .MuiButtonBase-root.Mui-selected' : {
+							backgroundColor: props.darkMode ? "rgb(40, 40, 40)" : ""
+						}
+					}}/>
+				</Stack>
 				
 			</div>
 		</div>

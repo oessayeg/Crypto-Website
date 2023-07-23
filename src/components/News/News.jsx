@@ -5,6 +5,12 @@ import blockchain from "./Blockchain"
 import 'react-alice-carousel/lib/alice-carousel.css'
 import AliceCarousel from "react-alice-carousel"
 import "../../style/News.css"
+import styled from "styled-components";
+
+
+const styledAlice = styled(AliceCarousel)`
+	
+`
 
 function News(props)
 {
@@ -14,7 +20,8 @@ function News(props)
 	const [landingCarousel, setLandingCarousel] = useState(null);
 	const [firstSubjCarousel, setFirstSubjCarousel] = useState(null);
 	const [secondSubjectCarousel, setSecondObjectCarousel] = useState(null);
-	
+	const [isDivHovered, setIsDivHovered] = useState(false);
+
 	const [gotBitcoinNews, setGotBitcoinNews] = useState(false);
 	const [gotWeb3News, setGotWeb3News] = useState(false);
 	const [gotBlockchainNews, setGotBlockchainNews] = useState(false);
@@ -62,13 +69,15 @@ function News(props)
 	}, [secondSubjectCarousel]);
 
 	return (
-		<section id="news-section">
+		<section id="news-section" style={{backgroundColor: props.darkMode ? "rgb(26, 26, 26)" : "#F5F5F5"}}>
+			<h1 style={{textAlign: "center", margin: "0", paddingTop: "40px",
+			fontFamily: "'Montserrat', sans-serif", fontSize: "26px", color : props.darkMode && "#F5F5F5"}}>Cryptocurrency World News</h1>
 			{gotBitcoinNews ? 
 			<AliceCarousel autoPlay="true" animationType="fadeout" disableButtonsControls animationDuration={600}
 			infinite="true" autoPlayInterval={5000}>
 				{landingCarousel.filter(article => article.author != "Filip De Mott").map(article => {
 					return (
-						<div id="landing-news">
+						<div id="landing-news" style={{boxShadow: props.darkMode && "0px 0px 7px #555555"}}>
 							<div style={{height: "500px", flexGrow: "1"}} onClick={(e) => window.open(article.url, "_blank")}>
 								<img style={{width: "100%", height: "100%"}} src={article.urlToImage}/>
 								<div style={{position: "absolute", bottom : "20px"}}>
@@ -83,41 +92,43 @@ function News(props)
 			</AliceCarousel> : <h1>Loading</h1>}
 
 			<div style={{marginBottom: "70px", fontFamily:"'Montserrat', sans-serif"}}>
-				<h3 style={{marginLeft: "15px"}}>Blockchain</h3>
+				<h3 style={{marginLeft: "15px",color: props.darkMode && "#F5F5F5"}}>Blockchain</h3>
 				{gotFirstSubjCarousel ? 
 				<AliceCarousel responsive={{ 0: {items : "3"}}} disableDotsControls="true" autoPlay="true" animationDuration={1000}
 				autoPlayInterval={6000} infinite="true" style={{paddingLeft: "30px"}}>
 					{firstSubjCarousel.filter(article => article.author != "msmash").map((article, index) => {
 						return <div id="first-subject-news" onClick={(e) => {
 							window.open(article.url, "_blank")
-						}} style={{marginRight: "15px", marginLeft: "15px"}}>
+						}} style={{marginRight: "15px", marginLeft: "15px",
+						backgroundColor: props.darkMode && "#333333", textDecorationColor: props.darkMode && "#F5F5F5"}}>
 							<div id="first-subject-image-wrapper" height="250px">
 								<img src={article.urlToImage} className="first-subject-images" loading="lazy"/>
 							</div>
-							<h2>{article.title}</h2>
-							<p>{article.description}</p>
-							<p className="news-author-auto">{article.author}</p>
+							<h2 style={{color: props.darkMode && "#F5F5F5"}}>{article.title}</h2>
+							<p style={{color: props.darkMode && "#F5F5F5"}}>{article.description}</p>
+							<p style={{color: props.darkMode && "#F5F5F5"}} className="news-author-auto">{article.author}</p>
 							</div>
 					})}
 				</AliceCarousel> : <h1>Loading</h1>}
 			</div>
 
 					{/* Second carousel */}
-			<div style={{marginBottom: "70px", marginTop: "70px", fontFamily:"'Montserrat', sans-serif"}}>
-				<h3 style={{marginLeft: "15px"}}>Web3</h3>
+			<div style={{marginBottom: "70px", marginTop: "70px", fontFamily:"'Montserrat', sans-serif" }}>
+				<h3 style={{marginLeft: "15px", color: props.darkMode && "#F5F5F5"}}>Web3</h3>
 				{gotFirstSubjCarousel ? 
 				<AliceCarousel responsive={{ 0: {items : "3"}}} disableDotsControls="true" autoPlay="true" animationDuration={1000}
 				autoPlayInterval={5000} infinite="true" style={{paddingLeft: "30px"}} autoPlayDirection="rtl">
 					{secondSubjectCarousel.filter(article => article.author != "msmash").map((article, index) => {
 						return <div id="first-subject-news" onClick={(e) => {
 							window.open(article.url, "_blank")
-						}} style={{marginRight: "15px", marginLeft: "15px"}}>
+						}} style={{marginRight: "15px", marginLeft: "15px", backgroundColor: props.darkMode && "#333333",
+						textDecorationColor: props.darkMode && "#F5F5F5"}}>
 							<div id="first-subject-image-wrapper" height="250px">
 								<img src={article.urlToImage} className="first-subject-images" loading="lazy"/>
 							</div>
-							<h2>{article.title}</h2>
-							<p>{article.description}</p>
-							<p className="news-author-auto">{article.author}</p>
+							<h2 style={{color: props.darkMode && "#F5F5F5"}}>{article.title}</h2>
+							<p style={{color: props.darkMode && "#F5F5F5"}}>{article.description}</p>
+							<p className="news-author-auto" style={{color: props.darkMode && "#F5F5F5"}}>{article.author}</p>
 							</div>
 					})}
 				</AliceCarousel> : <h1>Loading</h1>}
@@ -128,13 +139,14 @@ function News(props)
 					<div id="news-part">
 						{bitcoinNews.filter(article => (article.author != "Deanna Ritchie" && article.author != "George Glover" && article.author != "msmash")).slice(0, 13).map(article => {
 							return (
-								<div id="all-news-section" onClick={(e) => window.open(article.url, "_blank")}>
+								<div id="all-news-section" onClick={(e) => window.open(article.url, "_blank")}
+								style={{backgroundColor : props.darkMode && "#333333"}}>
 									<img src={article.urlToImage} width="170px" loading="lazy"/>
 									<div>
-										<h3>{article.title}</h3>
-										<p>{article.description.substring(0, 130)}</p>
+										<h3 style={{color : props.darkMode && "#f5f5f5"}}>{article.title}</h3>
+										<p style={{color : props.darkMode && "#f5f5f5"}}>{article.description.substring(0, 130)}{article.description.length > 130 && "..."}</p>
 									</div>
-									<p  style={{fontStyle: "italic"}}>{article.author}</p>
+									<p  style={{fontStyle: "italic", color : props.darkMode && "#f5f5f5"}}>{article.author}</p>
 								</div>
 							);
 						})}
@@ -142,13 +154,15 @@ function News(props)
 					<div id="news-part">
 					{web3News.slice(0, 13).map(article => {
 						return (
-							<div id="all-news-section" onClick={(e) => window.open(article.url, "_blank")}>
+							<div id="all-news-section" onClick={(e) => window.open(article.url, "_blank")}
+							style={{backgroundColor : props.darkMode && "#333333", textDecorationColor: props.darkMode && "#f5f5f5"}}>
 								<img src={article.urlToImage} width="170px" loading="lazy"/>
 								<div>
-									<h3>{article.title}</h3>
-									<p>{article.description.substring(0, 130)}</p>
+									<h3 style={{color : props.darkMode && "#f5f5f5"}}>{article.title}</h3>
+									<p style={{color : props.darkMode && "#f5f5f5"}}>{article.description.substring(0, 130)}{article.description.length > 130 && "..."}</p>
 								</div>
-								<p  style={{fontStyle: "italic"}}>{article.author.length > 60 ? "" : (article.author)}</p>
+								<p style={{fontStyle: "italic", color : props.darkMode && "#f5f5f5"}}
+								>{article.author.length > 60 ? "" : (article.author)}</p>
 							</div>
 						);
 					})}

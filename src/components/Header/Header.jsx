@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import "../../style/Header.css"
 import { Link } from "react-router-dom"
-import lightModeWhite from "./images/lightMode2.png"
+import lightModeWhite from "./images/lightModeWhite.png"
 import lightModeBlack from "./images/lightModeBlack.png"
 import nightModeWhite from "./images/nightMode.png"
 import nightModeBlack from "./images/nightModeBlack.png"
