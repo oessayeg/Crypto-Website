@@ -22,7 +22,7 @@ const StyledLi = styled.li`
 `
 
 const StyledDarkModeButton = styled.li`
-  border: ${(props) => props.darkMode ? "1px solid white;" : "1px solid #333333;"}
+  border : ${(props) => props.$darkmode ? "1px solid white" : "1px solid #333333"};
   background-color : ${(props) => props.$darkmode ? "white" : "#333333"};
 
   &:hover
@@ -55,7 +55,7 @@ function Header(props) {
 				<StyledLi $background={props.darkMode ? "#F5F5F5" : "#333333"}>
 					<Link to="/news" style={linkStyle}>News</Link>
 				</StyledLi>
-				<StyledDarkModeButton $darkmode={props.darkMode}
+				<StyledDarkModeButton $darkmode={props.darkMode} 
 				 onClick={(e) => props.setDarkMode(!props.darkMode)} className="last-li" onMouseEnter={(e) => setIsHovered(hover => !hover)}
 				 onMouseLeave={(e) => setIsHovered(hover => !hover)}>
 					<img src={isHovered ? (props.darkMode ? lightModeWhite : nightModeBlack) : (props.darkMode ? lightModeBlack : nightModeWhite) } width="23px"/>

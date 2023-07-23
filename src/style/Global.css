@@ -7,6 +7,13 @@ body
 {
 	margin: 0;
 	padding: 0;
+	display: flex;
+	justify-content: center;
+	background-color: #c7c7c7;
+}
+
+#root
+{
 	max-width: 1440px;
 }
 
