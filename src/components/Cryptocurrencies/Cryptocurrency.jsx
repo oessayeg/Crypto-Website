@@ -2,16 +2,15 @@ import React, { useState } from "react"
 import { useEffect } from "react"
 import AliceCarousel from 'react-alice-carousel'
 import 'react-alice-carousel/lib/alice-carousel.css'
-import coins from "../Home/data/data2.js"
 import "../../style/Cryptocurrency.css"
 import { Chart } from "chart.js/auto"
 import { Line } from "react-chartjs-2"
 import Paper from '@mui/material/Paper'
 import { Table, TableContainer, TableHead, TableRow, TableCell, TableBody, makeStyles } from "@mui/material"
-import Pagination from '@mui/material/Pagination';
-import Stack from '@mui/material/Stack';
-import Box from '@mui/material/Box';
-import LinearProgress from '@mui/material/LinearProgress';
+import Pagination from '@mui/material/Pagination'
+import Stack from '@mui/material/Stack'
+import Box from '@mui/material/Box'
+import LinearProgress from '@mui/material/LinearProgress'
 
 const options = {
 	responsive: true,
@@ -36,20 +35,9 @@ const options = {
 
 function Cryptocurrency(props) {
 
-	const [randomCoins, setRandomCoins] = useState(null);
-	const [gotRandomCoins, setGotRandomCoins] = useState(false);
 	const [page, setPage] = useState(1);
 	const [searchPattern, setSearchPattern] = useState("");
 	const [isFocused, setIsFocused] = useState(false);
-
-	useEffect(() => {
-			setRandomCoins(coins.slice(0, 8));
-	}, []);
-
-	useEffect(() => {
-		if (randomCoins)
-			setGotRandomCoins(true);
-	}, [randomCoins]);
 
 	function priceColor(price) {
 		return {fontFamily: "'Montserrat', sans-serif",
@@ -65,9 +53,9 @@ function Cryptocurrency(props) {
 				<h1 style={{color: props.darkMode ? "#f5f5f5" : "#333333"}}>Crypto Market Data</h1>
 				<p style={{color: props.darkMode ? "#f5f5f5" : "#333333"}}>Stay updated and track your favorite cryptocurrency</p>
 			</div>
-			<div id="trending-coins-carousel" style={{paddingRight : !gotRandomCoins && "24px",
-					paddingLeft: !gotRandomCoins && "24px"}}>
-				{gotRandomCoins ? 
+			<div id="trending-coins-carousel" style={{paddingRight : !props.gotCarouselCoins && "24px",
+					paddingLeft: !props.gotCarouselCoins && "24px"}}>
+				{props.gotCarouselCoins ? 
 				<AliceCarousel responsive={{
 					0: {
 						items: 1,
@@ -78,7 +66,7 @@ function Cryptocurrency(props) {
 					}
 				}} autoPlay="true" infinite="true" autoPlayInterval={2000}
 				disableButtonsControls="true" disableDotsControls="true" animationDuration={1500}>
-				{randomCoins.map(coin => {
+				{props.carouselCoins.map(coin => {
 					return (
 						<div id="trending-coins-block" key={coin.symbol}>
 							<img src={coin.image} width="110px" height="110px"/>	
@@ -110,8 +98,9 @@ function Cryptocurrency(props) {
 					setSearchPattern(e.target.value);
 					setPage(1);
 					}} onFocus={(e) => setIsFocused(true)} onBlur={(e) => setIsFocused(false)}/>
-				<span style={{color: props.darkMode ? "#f5f5f5" : "#333333", backgroundColor: isFocused ? (props.darkMode ? "#1a1a1a" : "#f5f5f5") : ""}}>Search for a cryptocurrency</span>
+				<span style={{color: props.darkMode ? "#f5f5f5" : "#333333", backgroundColor: (isFocused || searchPattern.length > 0) ? (props.darkMode ? "#1a1a1a" : "#f5f5f5") : ""}}>Search for a cryptocurrency</span>
 			</div>
+			{props.isDataReady ? 
 			<div id="all-coins-data">
 			<TableContainer component={Paper}>
 				<Table sx={{ minWidth: 650 }} aria-label="Cryptocurrencies market infos">
@@ -128,7 +117,7 @@ function Cryptocurrency(props) {
 						</TableRow>
 					</TableHead>
 					<TableBody style={{borderBottom: "1px solid grey", borderBottomRightRadius: "0"}}>
-							{coins.filter(coin => coin.name.toLowerCase().includes(searchPattern.toLowerCase())).slice((page - 1) * 13, (page - 1) * 13 + 13).map((coin) => (
+							{props.coins.filter(coin => coin.name.toLowerCase().includes(searchPattern.toLowerCase())).slice((page - 1) * 13, (page - 1) * 13 + 13).map((coin) => (
 								<TableRow sx={{ '&:last-child td, &:last-child th': { border: 0 } }} key={coin.name}>
 									<TableCell style={{backgroundColor: props.darkMode ? "#1a1a1a" : "", transition : "background-color 1s ease", borderColor: props.darkMode ? "grey" : ""}}>
 										<div id="coin-icon-block">
@@ -168,10 +157,10 @@ function Cryptocurrency(props) {
         			</TableBody>
 				</Table>
 		</TableContainer>
-			</div>
+			</div> : <h1>Preparing data</h1>}
 			<div id="pagination">
 				<Stack spacing={2}>
-					<Pagination count={Number((coins.filter(coin => coin.name.toLowerCase().includes(searchPattern.toLowerCase())).length / 13).toFixed(0))}
+					<Pagination count={Number((props.coins.filter(coin => coin.name.toLowerCase().includes(searchPattern.toLowerCase())).length / 13).toFixed(0))}
 					onChange={(e, value) => {setPage(value)}}
 					sx={{
 						'& .MuiButtonBase-root' : {

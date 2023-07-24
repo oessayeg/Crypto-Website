@@ -26346,4 +26346,5 @@ let data = [
     "price_change_percentage_7d_in_currency": 0.4427952304694676
   }
 ]
+
 export default data;
