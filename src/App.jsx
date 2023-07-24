@@ -40,9 +40,9 @@ function App() {
 
     // Just for the test
     setCryptoData(coins);
-    setBitcoinNews(bitcoin);
-    setWeb3News(web3);
-    setBlockchainNews(blockchain);
+    setBitcoinNews(bitcoin.articles.filter(article => article.author && article.urlToImage));
+    setWeb3News(web3.articles.filter(article => article.author && article.urlToImage));
+    setBlockchainNews(blockchain.articles.filter(article => article.author && article.urlToImage));
   }, []);
 
 
@@ -64,7 +64,9 @@ function App() {
     <Header darkMode={darkMode} setDarkMode={setDarkMode}/>
     <Routes>
       <Route path="/" element={<Home darkMode={darkMode}/>} />
-      <Route path="/news" element={<News darkMode={darkMode} bitcoinNews={bitcoinNews} blockchainNews={blockchainNews} web3News={web3News}/>} />
+      <Route path="/news" element={<News darkMode={darkMode} bitcoinNews={bitcoinNews != null ? bitcoinNews.slice(5) : null} blockchainNews={blockchainNews != null ? blockchainNews : null}
+        web3News={web3News != null ? web3News.slice(20) : null} landingCarouselNews={bitcoinNews != null ? bitcoinNews.slice(0, 5) : null}
+        firstCarouselSubject={blockchainNews != null ? blockchainNews.slice(0, 8) : null} secondCarouselSubject={web3News != null ? web3News.slice(6, 14) : null}/>} />
       <Route path="/cryptocurrencies" element={<Cryptocurrency darkMode={darkMode} coins={cryptoData} isDataReady={isDataReady} carouselCoins={carouselCoins} gotCarouselCoins={gotCarouselCoins}/>} />
     </Routes>
     <Footer />

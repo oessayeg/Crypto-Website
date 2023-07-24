@@ -1,75 +1,18 @@
-import React, { useEffect, useState } from "react"
+import React from "react"
 import AliceCarousel from "react-alice-carousel"
-import bitcoin from "./data/Bitcoin"
-import web3 from "./data/Web3"
-import blockchain from "./data/Blockchain"
 import 'react-alice-carousel/lib/alice-carousel.css'
 import "../../style/News.css"
 
 function News(props)
 {
-	const [bitcoinNews, setBitcoinNews] = useState(null);
-	const [web3News, setWeb3News] = useState(null);
-	const [blockchainNews, setBlockchainNews] = useState(null);
-	const [landingCarousel, setLandingCarousel] = useState(null);
-	const [firstSubjCarousel, setFirstSubjCarousel] = useState(null);
-	const [secondSubjectCarousel, setSecondObjectCarousel] = useState(null);
-	const [isDivHovered, setIsDivHovered] = useState(false);
-
-	const [gotBitcoinNews, setGotBitcoinNews] = useState(false);
-	const [gotWeb3News, setGotWeb3News] = useState(false);
-	const [gotBlockchainNews, setGotBlockchainNews] = useState(false);
-	const [gotLandingCarousel, setGotLandingCarousel] = useState(false);
-	const [gotFirstSubjCarousel, setGotFirstSubjCarousel] = useState(false);
-	const [gotSecondSubjectCarousel, setGotSecondSubjectCarousel] = useState(false);
-	
-	useEffect(() => {
-		setBitcoinNews(bitcoin.articles.filter(article => (article.author && article.urlToImage)).slice(5));
-		setLandingCarousel(bitcoin.articles.filter(article => (article.author && article.urlToImage)).slice(0, 5));
-		setWeb3News(web3.articles.filter(article => (article.author && article.urlToImage)).slice(30));
-		setBlockchainNews(blockchain.articles.filter(article => (article.author && article.urlToImage)).slice(8));
-		setFirstSubjCarousel(blockchain.articles.filter(article => (article.author && article.urlToImage)).slice(0, 8));
-		setSecondObjectCarousel(web3.articles.filter(article => (article.author && article.urlToImage)).slice(5, 12));
-	}, []);
-
-	useEffect(() => {
-		if (firstSubjCarousel)
-			setGotFirstSubjCarousel(true);
-	}, [firstSubjCarousel]);
-
-	useEffect(() => {
-		if (bitcoinNews)
-			setGotBitcoinNews(true);
-	}, [bitcoinNews]);
-
-	useEffect(() => {
-		if (web3News)
-			setGotWeb3News(true);
-	}, [web3News]);
-
-	useEffect(() => {
-		if (blockchainNews)
-			setBlockchainNews(true);
-	}, [blockchainNews]);
-
-	useEffect(() => {
-		if (landingCarousel)
-			setGotLandingCarousel(true);
-	}, [landingCarousel]);
-
-	useEffect(() => {
-		if (secondSubjectCarousel)
-			setGotSecondSubjectCarousel(true);
-	}, [secondSubjectCarousel]);
-
 	return (
 		<section id="news-section" style={{backgroundColor: props.darkMode ? "rgb(26, 26, 26)" : "#F5F5F5"}}>
 			<h1 style={{textAlign: "center", margin: "0", paddingTop: "40px",
 			fontFamily: "'Montserrat', sans-serif", fontSize: "26px", color : props.darkMode && "#F5F5F5"}}>Cryptocurrency World News</h1>
-			{gotBitcoinNews ? 
+			{props.landingCarouselNews != null ? 
 			<AliceCarousel autoPlay="true" animationType="fadeout" disableButtonsControls animationDuration={600}
 			infinite="true" autoPlayInterval={5000}>
-				{landingCarousel.filter(article => article.author != "Filip De Mott").map(article => {
+				{props.landingCarouselNews.filter(article => article.author != "Filip De Mott").map(article => {
 					return (
 						<div key={article.title} id="landing-news" style={{boxShadow: props.darkMode && "0px 0px 7px #555555"}}>
 							<div style={{height: "500px", flexGrow: "1"}} onClick={(e) => window.open(article.url, "_blank")}>
@@ -87,10 +30,10 @@ function News(props)
 
 			<div style={{marginBottom: "70px", fontFamily:"'Montserrat', sans-serif"}}>
 				<h3 style={{marginLeft: "15px",color: props.darkMode && "#F5F5F5"}}>Blockchain</h3>
-				{gotFirstSubjCarousel ? 
+				{props.firstCarouselSubject != null ? 
 				<AliceCarousel responsive={{ 0: {items : "3"}}} disableDotsControls="true" autoPlay="true" animationDuration={1000}
 				autoPlayInterval={6000} infinite="true" style={{paddingLeft: "30px"}}>
-					{firstSubjCarousel.filter(article => article.author != "msmash").map((article, index) => {
+					{props.firstCarouselSubject.filter(article => article.author != "msmash").map((article, index) => {
 						return <div id="first-subject-news" key={article.description} onClick={(e) => {
 							window.open(article.url, "_blank")
 						}} style={{marginRight: "15px", marginLeft: "15px",
@@ -106,13 +49,12 @@ function News(props)
 				</AliceCarousel> : <h1>Loading</h1>}
 			</div>
 
-					{/* Second carousel */}
 			<div style={{marginBottom: "70px", marginTop: "70px", fontFamily:"'Montserrat', sans-serif" }}>
 				<h3 style={{marginLeft: "15px", color: props.darkMode && "#F5F5F5"}}>Web3</h3>
-				{gotFirstSubjCarousel ? 
+				{props.secondCarouselSubject ? 
 				<AliceCarousel responsive={{ 0: {items : "3"}}} disableDotsControls="true" autoPlay="true" animationDuration={1000}
 				autoPlayInterval={5000} infinite="true" style={{paddingLeft: "30px"}} autoPlayDirection="rtl">
-					{secondSubjectCarousel.filter(article => article.author != "msmash").map((article, index) => {
+					{props.secondCarouselSubject.filter(article => article.author != "msmash").map((article, index) => {
 						return <div key={index} id="first-subject-news" onClick={(e) => {
 							window.open(article.url, "_blank")
 						}} style={{marginRight: "15px", marginLeft: "15px", backgroundColor: props.darkMode && "#333333",
@@ -128,10 +70,10 @@ function News(props)
 				</AliceCarousel> : <h1>Loading</h1>}
 			</div>
 			<div id="all-news">
-				{gotBitcoinNews ? 
+				{props.bitcoinNews && props.web3News ? 
 				<>
 					<div id="news-part">
-						{bitcoinNews.filter(article => (article.author != "Deanna Ritchie" && article.author != "George Glover" && article.author != "msmash")).slice(0, 13).map(article => {
+						{props.bitcoinNews.filter(article => (article.author != "Deanna Ritchie" && article.author != "George Glover" && article.author != "msmash")).slice(0, 13).map(article => {
 							return (
 								<div key={article.url} id="all-news-section" onClick={(e) => window.open(article.url, "_blank")}
 								style={{backgroundColor : props.darkMode && "#333333"}}>
@@ -146,7 +88,7 @@ function News(props)
 						})}
 					</div>
 					<div id="news-part">
-					{web3News.slice(0, 13).map(article => {
+					{props.web3News.slice(0, 13).map(article => {
 						return (
 							<div key={article.url} id="all-news-section" onClick={(e) => window.open(article.url, "_blank")}
 							style={{backgroundColor : props.darkMode && "#333333", textDecorationColor: props.darkMode && "#f5f5f5"}}>
