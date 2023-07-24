@@ -31,15 +31,16 @@ function App() {
   useEffect(() => {
     // -------- Cryptocurrencies --------
     // let cryptoData = fetch('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=130&page=1&sparkline=true&price_change_percentage=1h%2C7d%2C30d&locale=en');
-    // // let bitcoinNews = fetch('');
-    // console.log("I'm here");
+
     // cryptoData
     //   .then(data => data.json())
     //   .then(data => {
     //       setCryptoData(data);
     //   })
-    // setCryptoData(coins);
-    
+    //   .catch(error => {
+    //     console.log("here");
+    //     setCryptoData(coins)})
+
     // For testing 
     setCryptoData(coins);
     
@@ -97,7 +98,7 @@ function App() {
     <>
     <Header darkMode={darkMode} setDarkMode={setDarkMode}/>
     <Routes>
-      <Route path="/" element={<Home darkMode={darkMode}/>} />
+      <Route path="/" element={<Home darkMode={darkMode} cryptoData={cryptoData.length > 0 ? cryptoData.slice(0, 7) : null} newsExample={bitcoinNews ? bitcoinNews.slice(0, 40) : null}/>} />
       <Route path="/news" element={<News darkMode={darkMode} bitcoinNews={bitcoinNews != null ? bitcoinNews.slice(5) : null} blockchainNews={blockchainNews != null ? blockchainNews : null}
         web3News={web3News != null ? web3News.slice(20) : null} landingCarouselNews={bitcoinNews != null ? bitcoinNews.slice(0, 4) : null}
         firstCarouselSubject={blockchainNews != null ? blockchainNews.slice(0, 8) : null} secondCarouselSubject={web3News != null ? web3News.slice(6, 14) : null}/>} />

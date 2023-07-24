@@ -54,30 +54,6 @@ const options = {
 
 function Home(props) {
 
-	const [data, setData] = useState(null);
-	const [gotData, setGotData] = useState(false);
-	const [allNews, setNews] = useState(null);
-	const [gotNews, setGotNews] = useState(false);
-	const [newsExample, setNewsExample] = useState(null);
-
-	useEffect(() => {
-		setData(crData);
-		setNews(newsData.articles.filter(article => (article.author && article.urlToImage) ? article : ""))
-	}, []);
-
-	useEffect(() => {
-		if (data)
-			setGotData(true);
-	}, [data]);
-	
-	useEffect(() => {
-		if (allNews)
-		{
-			setGotNews(true);
-			setNewsExample(allNews.slice(0, 5));
-		}
-	}, [allNews])
-
 	const mainStyles = {
 		paddingLeft: "40px",
 		paddingRight: "40px",
@@ -132,7 +108,7 @@ function Home(props) {
 					<h3 style={{color : props.darkMode ? "#F5F5F5" : "#333333"}}>Popular cryptocurrencies</h3>
 					<Link to="cryptocurrencies" onClick={(e) => window.scrollTo({top: 0})}>See all <img src={whiteArrowRight}/></Link>
 				</div>
-				{gotData ? 
+				{props.cryptoData != null ? 
 				<TableContainer  component={Paper}>
 					<Table sx={{ minWidth: 650 }} aria-label="Table of crypto market data">
 						<TableHead style={{backgroundColor: "#ffbf00"}}>
@@ -148,7 +124,7 @@ function Home(props) {
 							</TableRow>
 						</TableHead>
 					<TableBody style={{borderBottom : props.darkMode ? "1px solid grey" : ""}}>
-							{data.slice(0, 7).map((coin, index) => {
+							{props.cryptoData.map((coin, index) => {
 								return (
 								<TableRow key={index} style={{backgroundColor : props.darkMode ? "#1a1a1a" : "white"}} sx={{ '&:last-child td, &:last-child th': { border: 0 } }} >
 										<TableCell component="th" scope="row" style={{padding: "8px", paddingLeft : "16px", fontFamily: "'Montserrat', sans-serif", borderColor: props.darkMode ? "grey" : ""}}>
@@ -193,28 +169,28 @@ function Home(props) {
 						<h3 style={{color: props.darkMode ? "#f5f5f5" : "#333333"}}>News</h3>
 						<Link to="/news" onClick={(e) => window.scrollTo({top : 0})}>See all <img src={whiteArrowRight}/> </Link>
 				</div>
-				{!gotNews ? <h1>Waiting for the news api</h1> :
+				{!props.newsExample ? <h1>Waiting for the news api</h1> :
 				<div id="some-news">
-					<div onClick={() => window.open(newsExample[0].url, "_blank")} style={
+					<div onClick={() => window.open(props.newsExample[0].url, "_blank")} style={
 						{backgroundColor: props.darkMode ? "#333333" : "white", textDecorationColor: props.darkMode ? "#F5F5F5" : "#333333" }}>
-						<img src={newsExample[0].urlToImage}/>
-						<h2 style={{color: props.darkMode ? "#f5f5f5" : "#333333"}}>{newsExample[0].title}</h2>
-						<p style={{color: props.darkMode ? "#f5f5f5" : "#333333"}}>{newsExample[0].description}</p>
-						<h5 style={{margin : "0", color: props.darkMode ? "#f5f5f5" : "#333333"}}>Author : {newsExample[0].author}</h5>
+						<img src={props.newsExample[0].urlToImage}/>
+						<h2 style={{color: props.darkMode ? "#f5f5f5" : "#333333"}}>{props.newsExample[0].title}</h2>
+						<p style={{color: props.darkMode ? "#f5f5f5" : "#333333"}}>{props.newsExample[0].description}</p>
+						<h5 style={{margin : "0", color: props.darkMode ? "#f5f5f5" : "#333333"}}>Author : {props.newsExample[0].author}</h5>
 					</div>
-					<div onClick={() => window.open(newsExample[1].url, "_blank")} style={
+					<div onClick={() => window.open(props.newsExample[1].url, "_blank")} style={
 						{backgroundColor: props.darkMode ? "#333333" : "white", textDecorationColor: props.darkMode ? "#F5F5F5" : "#333333"}}>
-						<img src={newsExample[1].urlToImage}/>
-						<h2 style={{color: props.darkMode ? "#f5f5f5" : "#333333"}}>{newsExample[1].title}</h2>
-						<p style={{color: props.darkMode ? "#f5f5f5" : "#333333"}}>{newsExample[1].description}</p>
-						<h5 style={{margin : "0", color: props.darkMode ? "#f5f5f5" : "#333333"}}>Author : {newsExample[1].author}</h5>
+						<img src={props.newsExample[1].urlToImage}/>
+						<h2 style={{color: props.darkMode ? "#f5f5f5" : "#333333"}}>{props.newsExample[1].title}</h2>
+						<p style={{color: props.darkMode ? "#f5f5f5" : "#333333"}}>{props.newsExample[1].description}</p>
+						<h5 style={{margin : "0", color: props.darkMode ? "#f5f5f5" : "#333333"}}>Author : {props.newsExample[1].author}</h5>
 					</div>
-					<div onClick={() => window.open(newsExample[2].url, "_blank")} style={
+					<div onClick={() => window.open(props.newsExample[2].url, "_blank")} style={
 						{backgroundColor: props.darkMode ? "#333333" : "white", textDecorationColor: props.darkMode ? "#F5F5F5" : "#333333"}}>
-						<img src={newsExample[2].urlToImage}/>
-						<h2 style={{color: props.darkMode ? "#f5f5f5" : "#333333"}}>{newsExample[2].title}</h2>
-						<p style={{color: props.darkMode ? "#f5f5f5" : "#333333"}}>{newsExample[2].description}</p>
-						<h5 style={{margin : "0", color: props.darkMode ? "#f5f5f5" : "#333333"}}>Author : {newsExample[2].author}</h5>
+						<img src={props.newsExample[2].urlToImage}/>
+						<h2 style={{color: props.darkMode ? "#f5f5f5" : "#333333"}}>{props.newsExample[2].title}</h2>
+						<p style={{color: props.darkMode ? "#f5f5f5" : "#333333"}}>{props.newsExample[2].description}</p>
+						<h5 style={{margin : "0", color: props.darkMode ? "#f5f5f5" : "#333333"}}>Author : {props.newsExample[2].author}</h5>
 					</div>
 				</div>
 				}
