@@ -93,8 +93,8 @@ function Home(props) {
 					<h2 style={{color : props.darkMode ? "#F5F5F5" : "#333333"}}>Read cryptocurrency news and track market data,&nbsp; <span className="easy-word">easily.</span></h2>
 					<p style={{color : props.darkMode ? "#F5F5F5" : "#333333"}}>Stay updated, seize opportunities, and conquer the crypto world !</p>
 					<div id="call-to-action-buttons">
-						<Link to="/news">News</Link>
-						<Link to="/cryptocurrencies">Market</Link>
+						<Link to="/cryptocurrencies" onClick={(e) => window.scrollTo({top : 0})}>Market</Link>
+						<Link to="/news" onClick={(e) => window.scrollTo({top : 0})}>News</Link>
 					</div>
 				</div>
 					<img src={heroImage} width="545px" height="545px"/>
@@ -130,7 +130,7 @@ function Home(props) {
 			<div id="crypto-data-examples">
 				<div id="crypto-data-example-head">
 					<h3 style={{color : props.darkMode ? "#F5F5F5" : "#333333"}}>Popular cryptocurrencies</h3>
-					<Link to="cryptocurrencies">See all <img src={whiteArrowRight}/></Link>
+					<Link to="cryptocurrencies" onClick={(e) => window.scrollTo({top: 0})}>See all <img src={whiteArrowRight}/></Link>
 				</div>
 				{gotData ? 
 				<TableContainer  component={Paper}>
@@ -191,7 +191,7 @@ function Home(props) {
 			<div id="news-example">
 				<div id="news-header">
 						<h3 style={{color: props.darkMode ? "#f5f5f5" : "#333333"}}>News</h3>
-						<Link to="/news">See all <img src={whiteArrowRight}/> </Link>
+						<Link to="/news" onClick={(e) => window.scrollTo({top : 0})}>See all <img src={whiteArrowRight}/> </Link>
 				</div>
 				{!gotNews ? <h1>Waiting for the news api</h1> :
 				<div id="some-news">

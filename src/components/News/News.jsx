@@ -49,7 +49,7 @@ function News(props)
 				</AliceCarousel> : <h1>Loading</h1>}
 			</div>
 
-			<div style={{marginBottom: "70px", marginTop: "70px", fontFamily:"'Montserrat', sans-serif" }}>
+			<div style={{marginBottom: "40px", marginTop: "70px", fontFamily:"'Montserrat', sans-serif" }}>
 				<h3 style={{marginLeft: "15px", color: props.darkMode && "#F5F5F5"}}>Web3</h3>
 				{props.secondCarouselSubject ? 
 				<AliceCarousel responsive={{ 0: {items : "3"}}} disableDotsControls="true" autoPlay="true" animationDuration={1000}
@@ -69,6 +69,8 @@ function News(props)
 					})}
 				</AliceCarousel> : <h1>Loading</h1>}
 			</div>
+			<h2 style={{color : props.darkMode ? "#F5F5F5" : "#333333", margin: "0",
+				textAlign: "center", fontFamily: "'Montserrat', sans-serif" }}>All Breaking News</h2>
 			<div id="all-news">
 				{props.bitcoinNews && props.web3News ? 
 				<>

@@ -29,22 +29,56 @@ function App() {
   const [web3News, setWeb3News] = useState(null);
 
   useEffect(() => {
+    // -------- Cryptocurrencies --------
     // let cryptoData = fetch('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=130&page=1&sparkline=true&price_change_percentage=1h%2C7d%2C30d&locale=en');
-
+    // // let bitcoinNews = fetch('');
+    // console.log("I'm here");
     // cryptoData
     //   .then(data => data.json())
     //   .then(data => {
     //       setCryptoData(data);
     //   })
     // setCryptoData(coins);
-
-    // Just for the test
+    
+    // For testing 
     setCryptoData(coins);
+    
+    // --------- Bitcoin ---------
+    // let bitcoinData = fetch('https://newsapi.org/v2/everything?q=bitcoin&sortBy=popularity&language=en&apiKey=1f0eb4f69e0a4838ac708150df989729');
+    // bitcoinData
+    //   .then(data => data.json())
+    //   .then(data => {
+    //     setBitcoinNews(data.articles.filter(article => article.author && article.urlToImage));
+    //   })
+
+    // For testing
     setBitcoinNews(bitcoin.articles.filter(article => article.author && article.urlToImage));
+
+    // ------- Web3 --------
+    // let web3Data = fetch('https://newsapi.org/v2/everything?q=web3&sortBy=popularity&language=en&apiKey=1f0eb4f69e0a4838ac708150df989729');
+    
+    // web3Data
+    //   .then(data => data.json())
+    //   .then(data => {
+    //   setWeb3News(data.articles.filter(article => article.author && article.urlToImage));
+    // });
+    
+    // For testing
     setWeb3News(web3.articles.filter(article => article.author && article.urlToImage));
+
+    // ------------ Blockchain -------------
+
+    // let blockchainData = fetch('https://newsapi.org/v2/everything?q=blockchain&sortBy=popularity&language=en&apiKey=1f0eb4f69e0a4838ac708150df989729');
+
+    // blockchainData
+    //   .then(data => data.json())
+    //   .then(data => {
+    //     setBlockchainNews(data.articles.filter(article => article.author != "Justine Calma"  && article.author && article.urlToImage))
+    //   });
+
+    // For testing
     setBlockchainNews(blockchain.articles.filter(article => article.author && article.urlToImage));
   }, []);
-
 
   useEffect(() => {
     if (cryptoData.length > 0)
@@ -65,7 +99,7 @@ function App() {
     <Routes>
       <Route path="/" element={<Home darkMode={darkMode}/>} />
       <Route path="/news" element={<News darkMode={darkMode} bitcoinNews={bitcoinNews != null ? bitcoinNews.slice(5) : null} blockchainNews={blockchainNews != null ? blockchainNews : null}
-        web3News={web3News != null ? web3News.slice(20) : null} landingCarouselNews={bitcoinNews != null ? bitcoinNews.slice(0, 5) : null}
+        web3News={web3News != null ? web3News.slice(20) : null} landingCarouselNews={bitcoinNews != null ? bitcoinNews.slice(0, 4) : null}
         firstCarouselSubject={blockchainNews != null ? blockchainNews.slice(0, 8) : null} secondCarouselSubject={web3News != null ? web3News.slice(6, 14) : null}/>} />
       <Route path="/cryptocurrencies" element={<Cryptocurrency darkMode={darkMode} coins={cryptoData} isDataReady={isDataReady} carouselCoins={carouselCoins} gotCarouselCoins={gotCarouselCoins}/>} />
     </Routes>
