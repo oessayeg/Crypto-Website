@@ -286,3 +286,17 @@
 	-webkit-background-clip: text;
 	-webkit-text-fill-color: transparent;
 }
+
+@media screen and (min-width: 1645px)
+{
+	#hero > img
+	{
+		width: 720px;
+		height: 720px;
+	}
+
+	#hero-text
+	{
+		width: 42%;
+	}
+}

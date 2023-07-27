@@ -1,6 +1,7 @@
 *
 {
 	color: #333333;
+	transition: background-color 1s ease;
 }
 
 body

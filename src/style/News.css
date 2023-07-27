@@ -231,3 +231,17 @@
 {
 	color: grey;
 }
+
+#landing-news-carousel-block
+{
+	height: 500px;
+	flex-grow: 1;
+}
+
+@media only screen and (min-width: 1600px)
+{
+	#landing-news-carousel-block
+	{
+		height: 650px;
+	}
+}

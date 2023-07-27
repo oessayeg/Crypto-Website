@@ -30,55 +30,55 @@ function App() {
 
   useEffect(() => {
     // -------- Cryptocurrencies --------
-    // let cryptoData = fetch('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=130&page=1&sparkline=true&price_change_percentage=1h%2C7d%2C30d&locale=en');
+    let cryptoData = fetch('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=130&page=1&sparkline=true&price_change_percentage=1h%2C7d%2C30d&locale=en');
 
-    // cryptoData
-    //   .then(data => data.json())
-    //   .then(data => {
-    //       setCryptoData(data);
-    //   })
-    //   .catch(error => {
-    //     console.log("here");
-    //     setCryptoData(coins)})
+    cryptoData
+      .then(data => data.json())
+      .then(data => {
+          setCryptoData(data);
+      })
+      .catch(error => {
+          setCryptoData(coins)
+      })
 
     // For testing 
-    setCryptoData(coins);
+    // setCryptoData(coins);
     
     // --------- Bitcoin ---------
-    // let bitcoinData = fetch('https://newsapi.org/v2/everything?q=bitcoin&sortBy=popularity&language=en&apiKey=1f0eb4f69e0a4838ac708150df989729');
-    // bitcoinData
-    //   .then(data => data.json())
-    //   .then(data => {
-    //     setBitcoinNews(data.articles.filter(article => article.author && article.urlToImage));
-    //   })
+    let bitcoinData = fetch('https://newsapi.org/v2/everything?q=bitcoin&sortBy=popularity&language=en&apiKey=1f0eb4f69e0a4838ac708150df989729');
+    bitcoinData
+      .then(data => data.json())
+      .then(data => {
+        setBitcoinNews(data.articles.filter(article => article.author && article.urlToImage));
+      })
 
     // For testing
-    setBitcoinNews(bitcoin.articles.filter(article => article.author && article.urlToImage));
+    // setBitcoinNews(bitcoin.articles.filter(article => article.author && article.urlToImage));
 
     // ------- Web3 --------
-    // let web3Data = fetch('https://newsapi.org/v2/everything?q=web3&sortBy=popularity&language=en&apiKey=1f0eb4f69e0a4838ac708150df989729');
+    let web3Data = fetch('https://newsapi.org/v2/everything?q=web3&sortBy=popularity&language=en&apiKey=1f0eb4f69e0a4838ac708150df989729');
     
-    // web3Data
-    //   .then(data => data.json())
-    //   .then(data => {
-    //   setWeb3News(data.articles.filter(article => article.author && article.urlToImage));
-    // });
+    web3Data
+      .then(data => data.json())
+      .then(data => {
+      setWeb3News(data.articles.filter(article => article.author && article.urlToImage));
+    });
     
     // For testing
-    setWeb3News(web3.articles.filter(article => article.author && article.urlToImage));
+    // setWeb3News(web3.articles.filter(article => article.author && article.urlToImage));
 
     // ------------ Blockchain -------------
 
-    // let blockchainData = fetch('https://newsapi.org/v2/everything?q=blockchain&sortBy=popularity&language=en&apiKey=1f0eb4f69e0a4838ac708150df989729');
+    let blockchainData = fetch('https://newsapi.org/v2/everything?q=blockchain&sortBy=popularity&language=en&apiKey=1f0eb4f69e0a4838ac708150df989729');
 
-    // blockchainData
-    //   .then(data => data.json())
-    //   .then(data => {
-    //     setBlockchainNews(data.articles.filter(article => article.author != "Justine Calma"  && article.author && article.urlToImage))
-    //   });
+    blockchainData
+      .then(data => data.json())
+      .then(data => {
+        setBlockchainNews(data.articles.filter(article => article.author != "Justine Calma"  && article.author && article.urlToImage))
+      });
 
     // For testing
-    setBlockchainNews(blockchain.articles.filter(article => article.author && article.urlToImage));
+    // setBlockchainNews(blockchain.articles.filter(article => article.author && article.urlToImage));
   }, []);
 
   useEffect(() => {

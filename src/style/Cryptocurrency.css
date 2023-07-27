@@ -131,3 +131,15 @@
 {
 	display: none;
 }
+
+@media screen and (min-height: 1900px)
+{
+	#crypto-page-header
+	{
+		margin-bottom: 100px;
+	}
+	#trending-coins-carousel
+	{
+		margin-bottom: 100px;
+	}
+}

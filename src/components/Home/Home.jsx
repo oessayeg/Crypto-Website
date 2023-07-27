@@ -73,7 +73,7 @@ function Home(props) {
 						<Link to="/news" onClick={(e) => window.scrollTo({top : 0})}>News</Link>
 					</div>
 				</div>
-					<img src={heroImage} width="545px" height="545px"/>
+					<img src={heroImage} width="555px" height="555px"/>
 			</div>
 			<hr style={{borderBottom: "none", borderLeft: "none", borderRight: "none", borderTop: props.darkMode ? "1px solid grey" : "1px solid #333333"}}></hr>
 			<div id="call-to-use">

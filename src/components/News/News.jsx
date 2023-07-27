@@ -15,7 +15,7 @@ function News(props)
 				{props.landingCarouselNews.filter(article => article.author != "Filip De Mott").map(article => {
 					return (
 						<div key={article.title} id="landing-news" style={{boxShadow: props.darkMode && "0px 0px 7px #555555"}}>
-							<div style={{height: "500px", flexGrow: "1"}} onClick={(e) => window.open(article.url, "_blank")}>
+							<div id="landing-news-carousel-block" onClick={(e) => window.open(article.url, "_blank")}>
 								<img style={{width: "100%", height: "100%"}} src={article.urlToImage}/>
 								<div style={{position: "absolute", bottom : "20px"}}>
 									<h1 style={{color:"#ffbf00", paddingLeft: "20px", paddingRight: "10%", fontSize: "35px", marginBottom: "0"}}>{article.title}</h1>
@@ -42,7 +42,7 @@ function News(props)
 								<img src={article.urlToImage} className="first-subject-images" loading="lazy"/>
 							</div>
 							<h2 style={{color: props.darkMode && "#F5F5F5"}}>{article.title}</h2>
-							<p style={{color: props.darkMode && "#F5F5F5"}}>{article.description}</p>
+							<p style={{color: props.darkMode && "#F5F5F5"}}>{article.description.slice(0, 130)}{article.description.length > 130 && "..."}</p>
 							<p style={{color: props.darkMode && "#F5F5F5"}} className="news-author-auto">{article.author}</p>
 							</div>
 					})}
@@ -63,7 +63,7 @@ function News(props)
 								<img src={article.urlToImage} className="first-subject-images" loading="lazy"/>
 							</div>
 							<h2 style={{color: props.darkMode && "#F5F5F5"}}>{article.title}</h2>
-							<p style={{color: props.darkMode && "#F5F5F5"}}>{article.description}</p>
+							<p style={{color: props.darkMode && "#F5F5F5"}}>{article.description.slice(0, 130)}{article.description.length > 130 && "..."}</p>
 							<p className="news-author-auto" style={{color: props.darkMode && "#F5F5F5"}}>{article.author}</p>
 							</div>
 					})}
