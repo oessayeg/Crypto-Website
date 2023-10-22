@@ -18,4 +18,7 @@ npm install && npm run dev
 
 <img width="1440" alt="Capture d’écran 2023-10-22 à 13 59 50" src="https://github.com/oessayeg/Crypto-Website/assets/96997041/561d154f-064f-4ee8-b1f5-fd0cfe0194fc"><br />
 
-<img width="1440" alt="Capture d’écran 2023-10-22 à 14 04 01" src="https://github.com/oessayeg/Crypto-Website/assets/96997041/9b6495d7-b07c-471e-b22c-7186c3a2f71d"><br />
+<img width="1440" alt="Capture d’écran 2023-10-22 à 14 04 01" src="https://github.com/oessayeg/Crypto-Website/assets/96997041/9b6495d7-b07c-471e-b22c-7186c3a2f71d"><br /><br />
+
+### Dark mode
+<img width="1440" alt="Capture d’écran 2023-10-22 à 14 04 50" src="https://github.com/oessayeg/Crypto-Website/assets/96997041/9ca23b8f-2705-4cb3-836a-54b560ea0678">
